@@ -7,21 +7,17 @@
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 
-id: my-ig
-canonical: http://example.com/fhir/example
-url: http://example.com/fhir/example/ImplementationGuide/my-ig
-name: ExampleIG
-title: "HL7 FHIR Implementation Guide: Example IG Release 1 - US Realm | STU1"
-description: Example IG exercises many of the fields in a SUSHI configuration.
-status: active
+id: terminology-services
+canonical: https://fhir.ee
+url: https://fhir.ee/ImplementationGuide/terminology-services
+name: terminology-services
+title: "Estonian Terminology Services Implementation Guide"
+description: Implementation and usage guidance for using Estonian national FHIR terminology server maintained by TEHIK
+status: draft
 license: CC0-1.0
-date: 2020-02-26
+date: 2023-06-29
 version: 1.0.0
-
-# Although fhirVersions is 0..* in the ImplementationGuide resource
-# it can be a single item OR and array here (but so far SUSHI only
-# supports 4.0.1 anyway).
-fhirVersion: 4.0.1
+fhirVersion: 5.0.0
 
 # The following two lines correspond to items that used to be in
 # ig.ini but were moved to IG.definition.parameter. For
@@ -29,31 +25,31 @@ fhirVersion: 4.0.1
 # camelcase, but if authors use the formal parameter names, SUSHI
 # will recognize them as well. In either case, they'll be copied
 # to the IG JSON using the formal names.
-copyrightYear: 2021+
-releaseLabel: STU1
+copyrightYear: 2023
+releaseLabel: draft
 
 # The publisher can be a single item or a list, each with a name and
 # optional url and/or email. The first publisher's name will be used
 # as IG.publisher.  The contact details and/or additional publishers
 # will be translated into IG.contact values.
 publisher:
-  name: My Organization 
-  url: http://example.com/committees
-  email: my-group@example.com
+  name: TEHIK
+  url: www.tehik.ee
+  email: fhir@tehik.ee
 
 # ContactDetail is required by the template.
 contact:
-  - name: Bob Smith
+  - name: Rutt Lindström
     telecom:
       - system: email
-        value: bobsmith@example.com
+        value: rutt.lindstrom@tehik.ee
         use: work
 
 # The jurisdiction can be a single item or a list. The FHIR Shorthand
 # code syntax can be used here.
 
 #jurisdiction: urn:iso:std:iso:3166#US "United States of America"
-jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
+jurisdiction: urn:iso:std:iso:3166#EE "Estonia"
 
 
 # The dependencies property corresponds to IG.dependsOn. The key is the
@@ -157,7 +153,7 @@ pages:
 # include a `menu.xml` file in input/includes.
 menu:
   Home: index.html
-#  Guidance: guidance.html
+#  Guidance: guidance.md
   Artifacts:
     Profiles: artifacts.html#2
     Extensions: artifacts.html#3
