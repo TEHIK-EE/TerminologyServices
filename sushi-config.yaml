@@ -125,11 +125,14 @@ jurisdiction: urn:iso:std:iso:3166#EE "Estonia"
 # with supported extensions (e.g., .md/.xml) will be treated as
 # sub-pages.
 pages:
-  index.xml:
+  index.md:
     title: Home
+  terminology.md:
+    title: Terminology | Terminoloogiad
   guidance.md:
-    title: Guidance | Juhendmaterjalid
-  changes.xml:
+    title: Services | Teenuste kasutamine
+  migration.md:
+    title: Migration | Loendite ületoomine Publitseerimiskeskusest
   downloads.xml:
 # The ImplementationGuide resource defines several other properties
 # not represented above. These properties can be used as-is and
@@ -154,13 +157,12 @@ pages:
 # include a `menu.xml` file in input/includes.
 menu:
   Home: index.html
+  Terminology: terminology.html
   Guidance: guidance.html
+  Migration: migration.html
   Artifacts: artifacts.html
-#    Profiles: artifacts.html#2
-#    Extensions: artifacts.html#3
-#    Value Sets: artifacts.html#4
   Downloads: downloads.html
-  Changes: changes.html
+#  Changes: changes.html
 #  History: ../history.html
 
 # The parameters property represents IG.definition.parameter. Rather

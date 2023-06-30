@@ -4,12 +4,17 @@
     This implementation guide describes the central FHIR terminology services maintained by Health and Welfare Information Systems Centre. 
     Main content is provided in English, more detailed specifications may occasionally be available only in Estonian.
    </p>
+
    <p>Käesolev juhis kirjeldab keskseid FHIR terminoloogiateenuseid, mida haldab Tervise ja Heaolu Infosüsteemide Keskus.
    Juhis on kirjutatud eesti ja inglise keeles, kusjuures eestikeelne tekst on kohati põhjalikum ja detailsem, olles suunatud kohalikule arendajale.
    </p>
 
   <h3>About | Juhendist</h3> <a name="content"> </a>
 	<p/>
+  <table border="0">
+  <tr><td><b>In English</b></td><td><b>Eesti keeles</b></td></tr>
+  <tr>
+  <td>
 <p>Central terminology services use FHIR standard, but the services themselves are not restricted to FHIR implementers. Terminology server replaces the old CSV-based publication portal, and will be used by the whole eHealth community in Estonia.</p>
 <p>Implementation Guide contains:</p>
 <ul>
@@ -21,7 +26,8 @@
   <li>Usage guidance, including basic querying</li>
 </ul>
 <p></p>
-
+</td>
+<td>
 <p>Kesksed terminoloogiaserverid on üles ehitatud FHIR standardile, kuid need on kasutamiseks laiemalt kui FHIR teenused. Terminoloogiaserver vahetab välja Publitseerimiskeskuse ning pakub loendite andmeid kõigile Eesti e-tervise arendajatele.</p>
 <p>Juhend sisaldab:</p>
 <ul>
@@ -32,9 +38,10 @@
   <li>Loogilised andmemudelid ja FHIR profiilid terminoloogiaga seotud ressursside avaldamiseks</li>
   <li>Kasutusjuhised, sh peamised päringud</li>
 </ul>
-
+</td>
+</tr></table>
 <a name="navigation"> </a>
-<p>The top menu allows quick navigation to the different sections, and a <a href="toc.html">Table of Contents</a> is provided with the entire content of this Implementation Guide. (Be aware that some pages have multiple tabs).</p>
+
 <p></p>
 	<a name="termserv"> </a>
 	<h3>Terminology Server | Terminoloogiaserver</h3>
