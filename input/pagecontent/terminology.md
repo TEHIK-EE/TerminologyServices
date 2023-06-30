@@ -1,5 +1,9 @@
-General information about terminologies and philosophy of FHIR terminology
+### General information about terminologies
 
-Klassifikaatori/koodiloendi pass
+<p> <img src="codesystem-hierarchy.png" alt="alt text" width="1000"/> </p>
+<br clear="all"/>
 
-Muudatuste tegemise protsess
+### Metadata | Klassifikaatori/koodiloendi pass
+
+### Terminology management | Loendite haldamine
+
