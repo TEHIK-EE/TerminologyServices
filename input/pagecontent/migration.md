@@ -9,6 +9,6 @@ vanad versioonid
 
 üleminekutabelid  
 
-<img src="migration.png" alt="alt text" width="1000"/>
+<img src="migration.png" alt="alt text" width="800"/>
 <br clear="all"/>
 

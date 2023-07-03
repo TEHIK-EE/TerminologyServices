@@ -1,6 +1,6 @@
 ### General information about terminologies
 
-<p> <img src="codesystem-hierarchy.png" alt="alt text" width="1000"/> </p>
+<p> <img src="codesystem-hierarchy.png" alt="alt text" width="900"/> </p>
 <br clear="all"/>
 
 ### Metadata | Klassifikaatori/koodiloendi pass
