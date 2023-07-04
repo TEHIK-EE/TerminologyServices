@@ -34,7 +34,7 @@ releaseLabel: draft
 # will be translated into IG.contact values.
 publisher:
   name: TEHIK
-  url: www.tehik.ee
+  url: https://www.tehik.ee
   email: fhir@tehik.ee
 
 # ContactDetail is required by the template.

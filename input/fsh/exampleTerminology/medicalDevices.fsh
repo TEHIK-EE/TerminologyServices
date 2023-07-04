@@ -1,3 +1,5 @@
+Alias: $SCT = http://snomed.info/sct
+
 CodeSystem: AbivahendidJaMeditsiiniseadmedSupplement
 Id: abivahendid-ja-meditsiiniseadmed-supplement
 Title: "Abivahendid ja meditsiiniseadmed - CodeSystem Supplement"
@@ -8,7 +10,7 @@ Description: "Code System Supplement that provides custom hierarchy to be used i
 * ^status = #draft
 * ^compositional = false
 * ^content = #supplement
-* ^supplements = "http://snomed.info/sct"
+* ^supplements = $SCT
 * ^versionNeeded = true
 * ^experimental = true
 * ^publisher = "TEHIK"
@@ -38,3 +40,29 @@ Description: "Code System Supplement that provides custom hierarchy to be used i
 * #469512007 "Kõrvasisene kuuldeaparaat" "In-the-ear air-conduction hearing aid (physical object)"
 * #469512007 ^property.code = #group
 * #469512007 ^property.valueCode = #6012004
+
+
+ValueSet: MeditsiiniseadmedJaAbivahendidVS
+Id: meditsiiniseadmed-ja-abivahendid
+Title: "Meditsiiniseadmed ja abivahendid"
+Description: "An excerpt from a medical devices value set used in Estonian health information system. This example represents a value set that has a hierarchy that does not match the hierarchy of the code system, and therefore needs a code system supplement to add the additional groupings."
+* ^meta.profile = "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+* ^url = "https://fhir.ee/ValueSet/meditsiiniseadmed-ja-abivahendid"
+* ^identifier.system = "urn:ietf:rfc:3986"
+* ^identifier.value = "urn:oid:1.3.6.1.4.1.28284.6.2.1.321"
+* ^version = "4"
+* ^status = #draft
+* ^contact.telecom.system = #email
+* ^experimental = true
+* ^date = "2023-07-04T00:00:00.000Z"
+* ^publisher = "TEHIK"
+* $SCT#257192006 "Nägemist toetav vahend"
+* $SCT#50121007 "Prillid"
+* $SCT#57368009 "Kontaktläätsed"
+* $SCT#264865009 "Suurendusklaas"
+* $SCT#414928009 "Silmaprotees"
+* $SCT#6012004 "Kuulmist toetav vahend"
+* $SCT#469512007 "Kõrvasisene kuuldeaparaat"
+* $SCT#467138008 "Kõrvatagune kuuldeaparaat"
+* $SCT#43252007 "Kohleaarimplantaat"
+* $SCT#3611000181101 "This should fail - EE edition concept"
