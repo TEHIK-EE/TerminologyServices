@@ -15,6 +15,8 @@ Description: "Code System Supplement that provides custom hierarchy to be used i
 * ^experimental = true
 * ^publisher = "TEHIK"
 * ^date = "2023-07-04T00:00:00.000Z"
+* ^property.code = #group
+* ^property.type = #code
 
 
 * #6012004 "Kuulmist toetav vahend" "Hearing aid, device (physical object)"
