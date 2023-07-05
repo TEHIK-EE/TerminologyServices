@@ -6,7 +6,7 @@ Title: "Abivahendid ja meditsiiniseadmed - CodeSystem Supplement"
 Description: "Code System Supplement that provides custom hierarchy to be used in a specific value set"
 
 * ^url = "https://fhir.ee/CodeSystem/abivahendid-ja-meditsiiniseadmed-supplement"
-* ^version = "4"
+* ^version = "1.0.0"
 * ^status = #draft
 * ^compositional = false
 * ^content = #supplement
@@ -56,6 +56,7 @@ Description: "An excerpt from a medical devices value set used in Estonian healt
 * ^experimental = true
 * ^date = "2023-07-04T00:00:00.000Z"
 * ^publisher = "TEHIK"
+* ^compose.property = "parent"
 * $SCT#257192006 "Nägemist toetav vahend"
 * $SCT#50121007 "Prillid"
 * $SCT#57368009 "Kontaktläätsed"
@@ -65,4 +66,30 @@ Description: "An excerpt from a medical devices value set used in Estonian healt
 * $SCT#469512007 "Kõrvasisene kuuldeaparaat"
 * $SCT#467138008 "Kõrvatagune kuuldeaparaat"
 * $SCT#43252007 "Kohleaarimplantaat"
-* $SCT#3611000181101 "This should fail - EE edition concept"
+//* $SCT#3611000181101 "This should fail - EE edition concept"
+
+ValueSet: MeditsiiniseadmedJaAbivahendidVS2
+Id: meditsiiniseadmed-ja-abivahendid2
+Title: "Meditsiiniseadmed ja abivahendid2"
+Description: "Test2 An excerpt from a medical devices value set used in Estonian health information system. This example represents a value set that has a hierarchy that does not match the hierarchy of the code system, and therefore needs a code system supplement to add the additional groupings."
+* ^extension[http://hl7.org/fhir/StructureDefinition/valueset-supplement].valueCanonical = Canonical(abivahendid-ja-meditsiiniseadmed-supplement)
+* ^url = "https://fhir.ee/ValueSet/meditsiiniseadmed-ja-abivahendid2"
+* ^identifier.system = "urn:ietf:rfc:3986"
+//* ^identifier.value = "urn:oid:1.3.6.1.4.1.28284.6.2.1.321"
+* ^version = "4"
+* ^status = #draft
+* ^contact.telecom.system = #email
+* ^experimental = true
+* ^date = "2023-07-04T00:00:00.000Z"
+* ^publisher = "TEHIK"
+* ^compose.property = "group"
+
+* $SCT#257192006 "Nägemist toetav vahend"
+* $SCT#50121007 "Prillid"
+* $SCT#57368009 "Kontaktläätsed"
+* $SCT#264865009 "Suurendusklaas"
+* $SCT#414928009 "Silmaprotees"
+* $SCT#6012004 "Kuulmist toetav vahend"
+* $SCT#469512007 "Kõrvasisene kuuldeaparaat"
+* $SCT#467138008 "Kõrvatagune kuuldeaparaat"
+* $SCT#43252007 "Kohleaarimplantaat"
