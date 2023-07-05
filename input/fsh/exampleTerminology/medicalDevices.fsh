@@ -76,8 +76,6 @@ Title: "Meditsiiniseadmed ja abivahendid2"
 Description: "Test2 An excerpt from a medical devices value set used in Estonian health information system. This example represents a value set that has a hierarchy that does not match the hierarchy of the code system, and therefore needs a code system supplement to add the additional groupings."
 * ^extension[http://hl7.org/fhir/StructureDefinition/valueset-supplement].valueCanonical = Canonical(abivahendid-ja-meditsiiniseadmed-supplement)
 * ^url = "https://fhir.ee/ValueSet/meditsiiniseadmed-ja-abivahendid2"
-* ^identifier.system = "urn:ietf:rfc:3986"
-//* ^identifier.value = "urn:oid:1.3.6.1.4.1.28284.6.2.1.321"
 * ^version = "4"
 * ^status = #draft
 * ^contact.telecom.system = #email
@@ -95,3 +93,5 @@ Description: "Test2 An excerpt from a medical devices value set used in Estonian
 * $SCT#469512007 "Kõrvasisene kuuldeaparaat"
 * $SCT#467138008 "Kõrvatagune kuuldeaparaat"
 * $SCT#43252007 "Kohleaarimplantaat"
+//* ^identifier.system = "urn:ietf:rfc:3986"
+//* ^identifier.value = "urn:oid:1.3.6.1.4.1.28284.6.2.1.321"
