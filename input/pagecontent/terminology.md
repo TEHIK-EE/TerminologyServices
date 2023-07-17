@@ -36,7 +36,7 @@ There are many types of controlled vocabularies, and the distinction is not alwa
  370135005 |Pathological process (attribute)| = 441862004 |Infectious process (qualifier value)|,  
  246075003 |Causative agent (attribute)| = 49872002 |Virus (organism)|  
 
-**Classification** (et 'klassifikaator) is finite list of concepts, designed to suit best for statistical use case, but often used also for clinical documentation. Classification is built on the closed world assumption, and even though they are updated like any other terminology asset, they aim to stay as stable as possible, and are therefore less flexible by design. Classifications inevitably contain so-called residue categories, because all concepts must fall under a category. The best known classifications in healthcare are the ones maintained by WHO: ICD-10, ICF, ATC. For ICD-11, it is important to know, that while mortality and morbidity causes are a classical classification, the foundation layer is closer to a nomenclature by nature.
+**Classification** (et 'klassifikaator) is finite list of concepts, designed to suit best for statistical use case, but often used also for clinical documentation. Classification is built on the closed world assumption, and even though they are updated like any other terminology asset, they aim to stay as stable as possible, and are therefore less flexible by design. Classifications inevitably contain so-called residue categories, because all concepts must fall under a category. The best known classifications in healthcare are the ones maintained by WHO: ICD-10 (et RHK-10), ICF (et RFK), ATC. For ICD-11 (et RHK-11), it is important to know, that while mortality and morbidity causes continue to be a classification, the foundation layer is planned to be closer to a nomenclature by nature.
 
 #### Hierarchy
 
@@ -49,7 +49,15 @@ For bigger terminology systems, hierarchy is preferred. Classifications, designe
 From a technical (FHIR) point of view, monohierarchical parent-child relationshios can be conveyed in a nested structure, where child concepts are defined inside the parent concept. In a polyhierarchical structure, parent-child concept must be defined in a property/attribute.
 
 
-### Metadata | Klassifikaatori/koodiloendi pass
+### Metadata
+Our long history of central terminology management has taught us the importance of metadata. Each terminology asset needs a periodic review, content quality control, and a responsible decision maker, maintainer, publisher, etc. Large international terminologies have their own processes defined for local content and translation management, but also the tiniest value sets need a dedicated owner and process for updating.
 
-### Terminology management | Loendite haldamine
+For each terminology asset, certain list of metadata is created. This metadata is also published via terminology server as the terminology resource metadata. The metadata list (et klassifikaatori/koodiloendi pass) has been decided by the eHealth terminology coordination group run by the ministry of social affairs. This group is also responsible for validating requests for new classifications and code lists for national eHealth related use cases. eHealth terminology management also aims to follow the requirements set by the Statistics Board (Statistikaamet).
 
+Most of TEHIK's value sets follow the same process for updating and publishing, even when the owners of the content differ. Value sets based on large international code systems (SNOMED CT, ATC) are dependent on the release cycles and content management of the underlying terminology system. 
+
+### Terminology management
+
+While we're working on the process diagrams and new workflows, feel free to ask any questions about health information system code lists to andmekorraldus@tehik.ee
+All (SNOMED CT)[https://browser.ihtsdotools.org/?] related questions are always welcome at snomed@tehik.ee 
+If you need linguistic help with Estonian clinical terminology, try using the (health dictionary)[https://tervisesonastik.tai.ee/] by Health Development Institute (TAI), or send them your question on medterm@tai.ee
