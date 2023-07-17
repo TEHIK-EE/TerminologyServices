@@ -59,5 +59,5 @@ Most of TEHIK's value sets follow the same process for updating and publishing, 
 ### Terminology management
 
 While we're working on the process diagrams and new workflows, feel free to ask any questions about health information system code lists to andmekorraldus@tehik.ee
-All (SNOMED CT)[https://browser.ihtsdotools.org/?] related questions are always welcome at snomed@tehik.ee 
-If you need linguistic help with Estonian clinical terminology, try using the (health dictionary)[https://tervisesonastik.tai.ee/] by Health Development Institute (TAI), or send them your question on medterm@tai.ee
+All [SNOMED CT](https://browser.ihtsdotools.org/?) related questions are always welcome at snomed@tehik.ee 
+If you need linguistic help with Estonian clinical terminology, try using the [health dictionary](https://tervisesonastik.tai.ee/) by Health Development Institute (TAI), or send them your question at medterm@tai.ee
