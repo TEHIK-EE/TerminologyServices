@@ -24,23 +24,29 @@ More reading on theory:
 
 #### Types of terminologies
 
-There are many types of controlled vocabularies, and the distinction is not always clear. The following definitions highlight certain aspects, but don't provide a classification for terminology assets.
+There are many types of controlled vocabularies, and the distinction is not always clear. The following explanations highlight certain aspects, but don't provide full definition or an exhaustive classification for terminology assets.
 
-**Code list**
+**Code list** (et 'koodiloend') is a simple list of coded concepts to be used in a more or less specific context. Typically, code lists are quite implementation-specific, and used locally. A code list is an ambiguous term in FHIR context, because it can technically conveyed by a CodeSystem or ValueSet resource, or both. Most of Estonian health information system value sets are based on locally defined code lists, and are considered separate CodeSystems in FHIR context, because of collision of codes and concept meanings between different code lists.
 
-**Nomenclature**
+**Nomenclature** (et 'nomenklatuur', 'sõnastik') is a controlled list of terms to be used in a certain field of science. Both, SNOMED CT and LOINC are called nomenclatures - they are different in their structure, but both aim to be exhaustive but never complete terminologies for their domain.
 
-**Ontology**
+**Ontology** (et 'ontoloogia') is a controlled vocabulary where concepts are semantically defined/described through their relationships with other concepts from the same vocabulary. Unlike a thesaurus, an ontology is expected to be machine-readable and computable. The best known ontology is SNOMED CT. For example, for concept 75570004 |Viral pneumonia (disorder)|, we have the information about the parents, but also the following lateral relationships (note, that the relationship attributes are also coded concepts):  
+ 363698007 |Finding site (attribute)| = 39607008 |Lung structure (body structure)|,   
+ 116676008 |Associated morphology (attribute)| = 707496003 |Inflammation and consolidation (morphologic abnormality)|,  
+ 370135005 |Pathological process (attribute)| = 441862004 |Infectious process (qualifier value)|,  
+ 246075003 |Causative agent (attribute)| = 49872002 |Virus (organism)|  
 
-**Classification** 
+**Classification** (et 'klassifikaator) is finite list of concepts, designed to suit best for statistical use case, but often used also for clinical documentation. Classification is built on the closed world assumption, and even though they are updated like any other terminology asset, they aim to stay as stable as possible, and are therefore less flexible by design. Classifications inevitably contain so-called residue categories, because all concepts must fall under a category. The best known classifications in healthcare are the ones maintained by WHO: ICD-10, ICF, ATC. For ICD-11, it is important to know, that while mortality and morbidity causes are a classical classification, the foundation layer is closer to a nomenclature by nature.
 
-#### Hierarchy and relationships
+#### Hierarchy
 
 A coded terminology can be a flat list, a simple hierarchy, or a polyhierarchy - each of these approaches have their pros and cons. Most value sets and simple lists of coded elements are represented as flat list. This approach is suitable when the list of concepts is relatively small.
-For bigger terminology systems, hierarchy is preferred. Classifications, designed primarily for health statistics, incline to use simple hierarchy (monohierarchy) where each concept can only have one parent. Clinical terminologies allow more flexibility and use polyhierarchy, where a concept can have multiple parents.
+For bigger terminology systems, hierarchy is preferred. Classifications, designed primarily for health statistics, incline to use simple hierarchy (monohierarchy) where each concept can only have one parent. Clinical terminologies allow more flexibility and may use polyhierarchy, where a concept can have multiple parents.
 
 <p> <img src="codesystem-hierarchy.png" alt="alt text" width="900"/> </p>
 <br clear="all"/>
+
+From a technical (FHIR) point of view, monohierarchical parent-child relationshios can be conveyed in a nested structure, where child concepts are defined inside the parent concept. In a polyhierarchical structure, parent-child concept must be defined in a property/attribute.
 
 
 ### Metadata | Klassifikaatori/koodiloendi pass
