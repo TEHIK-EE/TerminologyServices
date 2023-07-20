@@ -39,4 +39,4 @@ More information from **snomed@tehik.ee**.
 
 TEHIK terminology server example queries
 
-Ontoserver Postman collection by CSIRO
+[Ontoserver Postman collection](https://documenter.getpostman.com/view/634774/TVsuBmc9) by CSIRO
