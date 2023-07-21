@@ -1,6 +1,4 @@
-Alias: $SCT = http://snomed.info/sct
-
-CodeSystem: AbivahendidJaMeditsiiniseadmedSupplement
+/* CodeSystem: AbivahendidJaMeditsiiniseadmedSupplement
 Id: abivahendid-ja-meditsiiniseadmed-supplement
 Title: "Abivahendid ja meditsiiniseadmed - CodeSystem Supplement"
 Description: "Code System Supplement that provides custom hierarchy to be used in a specific value set"
@@ -95,3 +93,5 @@ Description: "Test2 An excerpt from a medical devices value set used in Estonian
 * $SCT#43252007 "Kohleaarimplantaat"
 //* ^identifier.system = "urn:ietf:rfc:3986"
 //* ^identifier.value = "urn:oid:1.3.6.1.4.1.28284.6.2.1.321"
+
+*/
