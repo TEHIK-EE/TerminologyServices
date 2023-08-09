@@ -51,8 +51,7 @@ Description: "Profile for the basic value set in TEHIK terminology server. Inclu
   * ^short = "Usage context: health, social care, work" 
 // TODO: value sets to use here.
 
-//version
-//versionAlgorithm
+//version and versionAlgorithm - anything to add to base spec?
 
 * compose.property 0..*
   * ^comment = "For locally defined code systems, all properties should be in default expansion. This means '*' in the definition."
