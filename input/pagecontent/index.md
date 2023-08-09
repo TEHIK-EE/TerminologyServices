@@ -54,6 +54,7 @@ Ontoserver licence was obtained through a public procurement process.
 
 #### Specifications| Juhendid
 * [FHIR Terminology Module](https://www.hl7.org/fhir/terminology-module.html)
+* [FHIR Terminology Services](https://www.hl7.org/fhir/terminology-service.html)
 * [FHIR Terminology Services Tutorial by CSIRO](https://youtu.be/Q3qx0jh8x4k)
 * [Ontoserver Quick Start](https://ontoserver.csiro.au/docs/6/)
 
