@@ -70,6 +70,9 @@ Description: "Profile for the basic value set in TEHIK terminology server. Inclu
 * extension contains change-management-description named changeManagement 1..1
   * ^short = "Description of change management: periodicity, change request workflow, release dates, responsibilities, etc"
 
+* extension contains change-management-description named codingGuidance 0..1
+  * ^short = "Guidance on how to understand codes"
+  
 * contained
   * ^short = "A value set can contain the code system (or its supplement) it is based on if the code system does not have a meaningful use outside this value set."
 /* 
