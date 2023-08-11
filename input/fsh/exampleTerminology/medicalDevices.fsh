@@ -1,97 +1,107 @@
-/* CodeSystem: AbivahendidJaMeditsiiniseadmedSupplement
-Id: abivahendid-ja-meditsiiniseadmed-supplement
-Title: "Abivahendid ja meditsiiniseadmed - CodeSystem Supplement"
+Instance: abivahendid-ja-meditsiiniseadmed-supplement
+InstanceOf: CodeSystem
+Usage: #example
+Title: "Abivahendid ja meditsiiniseadmed (Supplement)"
 Description: "Code System Supplement that provides custom hierarchy to be used in a specific value set"
 
-* ^url = "https://fhir.ee/CodeSystem/abivahendid-ja-meditsiiniseadmed-supplement"
-* ^version = "1.0.0"
-* ^status = #draft
-* ^compositional = false
-* ^content = #supplement
-* ^supplements = $SCT
-* ^versionNeeded = true
-* ^experimental = true
-* ^publisher = "TEHIK"
-* ^date = "2023-07-04T00:00:00.000Z"
-* ^property.code = #group
-* ^property.type = #code
+* url = "https://fhir.ee/CodeSystem/abivahendid-ja-meditsiiniseadmed-supplement"
+* version = "1.0.0"
+* status = #active
+* name = "AbivahendidJaMeditsiiniseadmedCSS"
+* compositional = false
+* content = #supplement
+* supplements = $SCT
+* versionNeeded = true
+* experimental = true
+* publisher = "TEHIK"
+* property[0].code = #parent
+* property[=].type = #code
+
+* concept[0].code = $SCT#257192006
+* concept[=].display = "Nägemist toetav vahend"
+* concept[=].display = "Aid to vision (physical object)"
+
+* concept[+].code = $SCT#6012004
+* concept[=].display = "Kuulmist toetav vahend"
+* concept[=].display = "Hearing aid, device (physical object)"
+
+* concept[+].code = $SCT#43252007
+* concept[=].display = "Kohleaarimplantaat"
+* concept[=].display = "Cochlear prosthesis, device (physical object)"
+* concept[=].property[0].code = #parent
+* concept[=].property[=].valueCode = #6012004
+
+* concept[+].code = $SCT#467138008
+* concept[=].display = "Kõrvatagune kuuldeaparaat"
+* concept[=].display = "Behind-the-ear air-conduction hearing aid (physical object)"
+* concept[=].property[0].code = #parent
+* concept[=].property[=].valueCode = #6012004
+
+* concept[+].code = $SCT#469512007
+* concept[=].display = "Kõrvasisene kuuldeaparaat"
+* concept[=].display = "In-the-ear air-conduction hearing aid (physical object)"
+* concept[=].property[0].code = #parent
+* concept[=].property[=].valueCode = #6012004
+
+* concept[+].code = $SCT#50121007
+* concept[=].display = "Prillid"
+* concept[=].display = "Eye glasses, device (physical object)"
+* concept[=].property[0].code = #parent
+* concept[=].property[=].valueCode = #257192006
+
+* concept[+].code = $SCT#57368009
+* concept[=].display = "Kontaktläätsed"
+* concept[=].display = "Contact lenses, device (physical object)"
+* concept[=].property[0].code = #parent
+* concept[=].property[=].valueCode = #257192006
+
+* concept[+].code = $SCT#264865009
+* concept[=].display = "Suurendusklaas"
+* concept[=].display = "Optical near vision magnifier (physical object)"
+* concept[=].property[0].code = #parent
+* concept[=].property[=].valueCode = #257192006
+
+* concept[+].code = $SCT#414928009
+* concept[=].display = "Silmaprotees"
+* concept[=].display = "Ocular prosthesis (physical object)"
+* concept[=].property[0].code = #parent
+* concept[=].property[=].valueCode = $SCT#257192006
 
 
-* #6012004 "Kuulmist toetav vahend" "Hearing aid, device (physical object)"
-* #43252007 "Kohleaarimplantaat" "Cochlear prosthesis, device (physical object)"
-* #43252007 ^property.code = #group
-* #43252007 ^property.valueCode = #6012004
-* #50121007 "Prillid" "Eye glasses, device (physical object)"
-* #50121007 ^property.code = #group
-* #50121007 ^property.valueCode = #257192006
-* #57368009 "Kontaktläätsed" "Contact lenses, device (physical object)"
-* #57368009 ^property.code = #group
-* #57368009 ^property.valueCode = #257192006
-* #257192006 "Nägemist toetav vahend" "Aid to vision (physical object)"
-* #264865009 "Suurendusklaas" "Optical near vision magnifier (physical object)"
-* #264865009 ^property.code = #group
-* #264865009 ^property.valueCode = #257192006
-* #414928009 "Silmaprotees" "Ocular prosthesis (physical object)"
-* #414928009 ^property.code = #group
-* #414928009 ^property.valueCode = #257192006
-* #467138008 "Kõrvatagune kuuldeaparaat" "Behind-the-ear air-conduction hearing aid (physical object)"
-* #467138008 ^property.code = #group
-* #467138008 ^property.valueCode = #6012004
-* #469512007 "Kõrvasisene kuuldeaparaat" "In-the-ear air-conduction hearing aid (physical object)"
-* #469512007 ^property.code = #group
-* #469512007 ^property.valueCode = #6012004
-
-
-ValueSet: MeditsiiniseadmedJaAbivahendidVS
-Id: meditsiiniseadmed-ja-abivahendid
-Title: "Meditsiiniseadmed ja abivahendid"
+Instance: abivahendid-ja-meditsiiniseadmed
+InstanceOf: ValueSet
+Usage: #example
+Title: "Abivahendid ja meditsiiniseadmed"
 Description: "An excerpt from a medical devices value set used in Estonian health information system. This example represents a value set that has a hierarchy that does not match the hierarchy of the code system, and therefore needs a code system supplement to add the additional groupings."
-* ^meta.profile = "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
-* ^url = "https://fhir.ee/ValueSet/meditsiiniseadmed-ja-abivahendid"
-* ^identifier.system = "urn:ietf:rfc:3986"
-* ^identifier.value = "urn:oid:1.3.6.1.4.1.28284.6.2.1.321"
-* ^version = "4"
-* ^status = #draft
-* ^contact.telecom.system = #email
-* ^experimental = true
-* ^date = "2023-07-04T00:00:00.000Z"
-* ^publisher = "TEHIK"
-* ^compose.property = "parent"
-* $SCT#257192006 "Nägemist toetav vahend"
-* $SCT#50121007 "Prillid"
-* $SCT#57368009 "Kontaktläätsed"
-* $SCT#264865009 "Suurendusklaas"
-* $SCT#414928009 "Silmaprotees"
-* $SCT#6012004 "Kuulmist toetav vahend"
-* $SCT#469512007 "Kõrvasisene kuuldeaparaat"
-* $SCT#467138008 "Kõrvatagune kuuldeaparaat"
-* $SCT#43252007 "Kohleaarimplantaat"
-//* $SCT#3611000181101 "This should fail - EE edition concept"
+* url = "https://fhir.ee/ValueSet/meditsiiniseadmed-ja-abivahendid"
+* extension[http://hl7.org/fhir/StructureDefinition/valueset-supplement].valueCanonical = Canonical(abivahendid-ja-meditsiiniseadmed-supplement)
+* identifier.system = "urn:ietf:rfc:3986"
+* identifier.value = "urn:oid:1.3.6.1.4.1.28284.6.2.1.321"
+* version = "4"
+* name = "AbivahendidJaMeditsiiniseadmed"
+* status = #draft
+* contact.telecom.system = #email
+* experimental = true
+* publisher = "TEHIK"
+* compose.property = "parent"
 
-ValueSet: MeditsiiniseadmedJaAbivahendidVS2
-Id: meditsiiniseadmed-ja-abivahendid2
-Title: "Meditsiiniseadmed ja abivahendid2"
-Description: "Test2 An excerpt from a medical devices value set used in Estonian health information system. This example represents a value set that has a hierarchy that does not match the hierarchy of the code system, and therefore needs a code system supplement to add the additional groupings."
-* ^extension[http://hl7.org/fhir/StructureDefinition/valueset-supplement].valueCanonical = Canonical(abivahendid-ja-meditsiiniseadmed-supplement)
-* ^url = "https://fhir.ee/ValueSet/meditsiiniseadmed-ja-abivahendid2"
-* ^version = "4"
-* ^status = #draft
-* ^contact.telecom.system = #email
-* ^experimental = true
-* ^date = "2023-07-04T00:00:00.000Z"
-* ^publisher = "TEHIK"
-* ^compose.property = "group"
-
-* $SCT#257192006 "Nägemist toetav vahend"
-* $SCT#50121007 "Prillid"
-* $SCT#57368009 "Kontaktläätsed"
-* $SCT#264865009 "Suurendusklaas"
-* $SCT#414928009 "Silmaprotees"
-* $SCT#6012004 "Kuulmist toetav vahend"
-* $SCT#469512007 "Kõrvasisene kuuldeaparaat"
-* $SCT#467138008 "Kõrvatagune kuuldeaparaat"
-* $SCT#43252007 "Kohleaarimplantaat"
-//* ^identifier.system = "urn:ietf:rfc:3986"
-//* ^identifier.value = "urn:oid:1.3.6.1.4.1.28284.6.2.1.321"
-
-*/
+* compose.include.system = $SCT
+* compose.include.concept[+].code = #257192006
+* compose.include.concept[=].display = "Nägemist toetav vahend"
+* compose.include.concept[+].code = #50121007
+* compose.include.concept[=].display = "Prillid"
+* compose.include.concept[+].code = #57368009
+* compose.include.concept[=].display = "Kontaktläätsed"
+* compose.include.concept[+].code = #264865009
+* compose.include.concept[=].display = "Suurendusklaas"
+* compose.include.concept[+].code = #414928009
+* compose.include.concept[=].display = "Silmaprotees"
+* compose.include.concept[+].code = #6012004
+* compose.include.concept[=].display = "Kuulmist toetav vahend"
+* compose.include.concept[+].code = #469512007
+* compose.include.concept[=].display = "Kõrvasisene kuuldeaparaat"
+* compose.include.concept[+].code = #467138008
+* compose.include.concept[=].display = "Kõrvatagune kuuldeaparaat"
+* compose.include.concept[+].code = #43252007
+* compose.include.concept[=].display = "Kohleaarimplantaat"
+//* compose.include.concept[+].code = #3611000181101 "This should fail - EE edition concept"
