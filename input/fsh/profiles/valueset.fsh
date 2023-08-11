@@ -67,7 +67,7 @@ Description: "Profile for the basic value set in TEHIK terminology server. Inclu
 * jurisdiction 0..0
 * topic 0..0
 
-* extension contains change-management-description named changeManagement 1..1
+* extension contains guidance-material named changeManagementDescription 1..1
   * ^short = "Description of change management: periodicity, change request workflow, release dates, responsibilities, etc"
 
 
