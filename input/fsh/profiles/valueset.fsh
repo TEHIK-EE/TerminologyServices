@@ -63,18 +63,16 @@ Description: "Profile for the basic value set in TEHIK terminology server. Inclu
   * ^short = "Owner of the value set. Organisation/group who is responsible for the content of the value set."
   * name 1..1
     * ^short = "Name of the organisation/group."
-
+  
 * jurisdiction 0..0
 * topic 0..0
 
 * extension contains change-management-description named changeManagement 1..1
   * ^short = "Description of change management: periodicity, change request workflow, release dates, responsibilities, etc"
 
-* extension contains change-management-description named codingGuidance 0..1
-  * ^short = "Guidance on how to understand codes"
-  
+
 * contained
-  * ^short = "A value set can contain the code system (or its supplement) it is based on if the code system does not have a meaningful use outside this value set."
+  * ^short = "A value set can contain codesystem supplement if the code system does not have a meaningful use outside this value set."
 /* 
 Add to migration:
 - Id
