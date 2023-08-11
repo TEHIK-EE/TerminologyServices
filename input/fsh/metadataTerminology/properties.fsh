@@ -76,4 +76,8 @@ Description: "Properties used in code systems published by TEHIK."
 * #replaces ^property.code = #datatype
 * #replaces ^property.valueString = "code"
 
+* #groupedBy "Grouped by" "Grouper code that can be used in a code system supplement to define concept groupings for a value set, especially when the hierarchy in the value set does not match the code system's hierachy and propery 'parent' cannot be used. "
+* #groupedBy ^property.code = #datatype
+* #groupedBy ^property.valueString = "code"
+
 
