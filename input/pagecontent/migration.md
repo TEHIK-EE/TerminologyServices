@@ -1,7 +1,7 @@
 
 ### Migration | Seos publitseerimiskeskusega
 
-TEHIK terminology server aims to re-publish all the terminology assets that have been published in https://pub.e-tervis.ee/classifications (no public international access).
+TEHIK terminology server aims to re-publish all the terminology assets that have been published in [TEHIK's old publication centre](https://pub.e-tervis.ee/classifications) (no public international access).
 
 #### General principles
 
@@ -11,19 +11,19 @@ Before FHIR, the distinction between code system and value set was much more flu
 <img src="migration.png" alt="alt text" width="700"/>
 <br clear="all"/>
 
-**Hierarchy**
+**Hierarchy**  
 For expressing hierarchy in a code system, property _parent_ is preferred over concepts-in-concepts structure. While terminology server are expected to handle both approaches, using property _parent_ allows us to handle polyhierarchy and monohierarchy the same way. 
 Property _parent_ kind of approach is closer to the flat table view which has been used for publishing terminology until now. Also, having hierarchy expressed as a property will allow users to use this property in value set expansion.
 
 Currently every code list includes columns: Parent code (Vanem_kood) and Hierarchy level (Hierarhia_aste). Column 'Hierachy level' will not be migrated, as it is obsolete. Column 'Parent code' will be migrated as property _parent_ in CodeSystem, and _groupedBy_ in CodeSystem supplement, which is contained in the value set. See more about hierarchy in value set below.
 
-**Effective dates and statuses of value set members**
+**Effective dates and statuses of value set members**  
 
 Status of value set members will not be migrated, because only active value set members will be published in every value set version. It is possible to add status ['deprecated'](http://hl7.org/fhir/extensions/StructureDefinition-valueset-deprecated.html) to a value set member, but it serves as a warning for future changes.
 
 Currently, every locally defined code list has three columns: Valid from (Kehtivuse_alguse_kpv), Valid until (Kehtivuse_lõpu_kpv), and Last updated (Viimane_muudatus_kpv). These columns will not be migrated as the content of a ValueSet. Valid from and Valid until dates will be migrated as effectivePeriod. 'Last updated' column will have no significant meaning after migration, and it will not be migrated. 
 
-#### Scope of migration
+#### Scope of migration  
 
 The focus of the first migration:
 - terminology assets currently published and maintained by TEHIK,
@@ -39,7 +39,7 @@ Lower priority activities:
 
 Creating concept maps between all the versions is a manual effort and will take a longer period. Please contact us about special needs of your project.
 
-#### Version handling
+#### Version handling  
 
 An example ([Rhd kuuluvus](https://pub.e-tervis.ee/classifications/RhD%20kuuluvus))  
 
@@ -77,7 +77,7 @@ An example ([Rhd kuuluvus](https://pub.e-tervis.ee/classifications/RhD%20kuuluvu
 |280416009|selguseta|selguseta|Indeterminate result (qualifier value)||0|28.03.2019|||Eesti Laborimeditsiini Ühing|1|Märgitakse, kui labor ei suuda RhD kuuluvust määrata|
 {:.table-bordered .table-sm}
 
-#### Hierarchy in value sets
+#### Hierarchy in value sets  
 
 FHIR does not allow hierarchy in the value set. However, Estonian code lists have always been used not just for validation, but also for interface terminology, which means that hierarchy and grouper concepts have been a norm.
 
@@ -103,30 +103,30 @@ Such situation where the value set subsumption differs from code system subsumpt
 The value set includes these properties as default properties for expansion.  
 
 
-#### CodeSystem exceptions
+#### CodeSystem exceptions  
 
 Large code systems do not follow the common rules of migration. Each of the following code systems is handled individually.
 
-**ICD-10 / RHK-10**
+**ICD-10 / RHK-10**  
 - ICD-10 international version is not published unless requested for a special purpose.
 - ICD-10 Estonian flavour is published as an independent CodeSystem.
 - Unlike current XML-structure, FHIR resource will express hierarchy in property _parent_ and does not use concepts-inside-concepts structure.
 - Descriptions in Estonian, English, and Latin, as well as all comments will be migrated.
 
-**SNOMED CT**
+**SNOMED CT**  
 - Default SNOMED CT version in terminology server is the latest Estonian edition.
 - Estonian edition is based on a certain international edition. This international release is also published in terminology server.
 - SNOMED CT as a full code system is not downloadable or updatable from terminology server.  
 - ValueSets based on SNOMED CT are migrated and published according to the rules for all value sets.
 
-**LOINC**
+**LOINC**  
 - LOINC is not migrated to terminology server in the first phase. 
 
-**NOMESCO Surgical Procedures (NCSP)**
+**NOMESCO Surgical Procedures (NCSP)**  
 - Will be migrated according to general principles. 
 - The latest version with restored hierarchy and Estonian and English descriptions will be used for migration.
 
-**ATC and other medication related terminologies**
+**ATC and other medication related terminologies**  
 - ATC will not be migrated in the first phase. While it is possible to make ATC available, the automatic updating from the source system will need to be put in place before being able to provide up-to-date service.
 - In later stage, Estonian version of ATC will be published with the mapping to international ATC (Estonian version contains local codes for extra granularity).
 - It is planned to update medication vocabularies directly and automatically from Ravimiamet's (State Agency of Medicines) sources.
