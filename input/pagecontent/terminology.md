@@ -43,7 +43,7 @@ There are many types of controlled vocabularies, and the distinction is not alwa
 A coded terminology can be a flat list, a simple hierarchy, or a polyhierarchy - each of these approaches have their pros and cons. Most value sets and simple lists of coded elements are represented as flat list. This approach is suitable when the list of concepts is relatively small.
 For bigger terminology systems, hierarchy is preferred. Classifications, designed primarily for health statistics, incline to use simple hierarchy (monohierarchy) where each concept can only have one parent. Clinical terminologies allow more flexibility and may use polyhierarchy, where a concept can have multiple parents.
 
-<p> <img src="codesystem-hierarchy.png" alt="alt text" width="900"/> </p>
+<p> <img src="codesystem-hierarchy.png" alt="Different hierarchies" width="900"/> </p>
 <br clear="all"/>
 
 From a technical (FHIR) point of view, monohierarchical parent-child relationshios can be conveyed in a nested structure, where child concepts are defined inside the parent concept. In a polyhierarchical structure, parent-child concept must be defined in a property/attribute.

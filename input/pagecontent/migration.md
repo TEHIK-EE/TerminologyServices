@@ -8,7 +8,7 @@ TEHIK terminology server aims to re-publish all the terminology assets that have
 **CodeSystem vs ValueSet distinction**  
 Before FHIR, the distinction between code system and value set was much more fluid. While the situation has been clear for large international code systems like ICD-10 or SNOMED CT, the majority of our legacy controlled vocabulary has been published as independent code lists, resulting in re-using same codes (001, 002) with many different meanings across lists. In FHIR, this results in an uncomfortable situation, that all these locally coded lists must technically become FHIR CodeSystems and ValueSets both, and OID is the identifier of the value set. The following diagram describes this basic migration rule: 
 
-<img src="migration.png" alt="alt text" width="700"/>
+<img src="migration.png" alt="Migration rule" width="700"/>
 <br clear="all"/>
 
 **Hierarchy**  
