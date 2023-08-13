@@ -1,6 +1,4 @@
-### Metadata authoring guide
-
-#### CodeSystem  
+### CodeSystem  
 
 |**id** |For locally defined codesystems [name]-[version], character limit is 64. For externally defined resources, the original id can be retained.|
 |**meta.profile** |Minimally HL7 Shareable CodeSystem profile [https://www.hl7.org/fhir/shareablecodesystem.html](https://www.hl7.org/fhir/shareablecodesystem.html). It is expected that all locally defined resources use the profile defined in this implementation guide.|
@@ -21,7 +19,7 @@
 |**concept**| | 
 {:.table-bordered .table-sm}
 
-#### ValueSet  
+### ValueSet  
 
 |**id** |For locally defined codesystems [name]-[version], character limit is 64. For externally defined resources, the original id can be retained.|
 |**meta.profile** |Minimally HL7 Shareable ValueSet profile [https://www.hl7.org/fhir/shareablevalueset.html](https://www.hl7.org/fhir/shareablevalueset.html). It is expected that all locally defined resources use the profile defined in this implementation guide.|
@@ -40,9 +38,9 @@
 {:.table-bordered .table-sm}
 
 
-#### ConceptMap
+### ConceptMap
 
-#### Deprecation rules
+### Deprecation rules
 
 |**status** |The status of a deprecated/inactive resource is **Retired**.|
 |**version** |The version will remain the same. The resource content does not change, except for _status_ and _description_.|

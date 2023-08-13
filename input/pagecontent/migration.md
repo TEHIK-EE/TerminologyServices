@@ -1,9 +1,7 @@
 
-### Migration | Seos publitseerimiskeskusega
-
 TEHIK terminology server aims to re-publish all the terminology assets that have been published in [TEHIK's old publication centre](https://pub.e-tervis.ee/classifications) (no public international access).
 
-#### General principles
+### General principles
 
 **CodeSystem vs ValueSet distinction**  
 Before FHIR, the distinction between code system and value set was much more fluid. While the situation has been clear for large international code systems like ICD-10 or SNOMED CT, the majority of our legacy controlled vocabulary has been published as independent code lists, resulting in re-using same codes (001, 002) with many different meanings across lists. In FHIR, this results in an uncomfortable situation, that all these locally coded lists must technically become FHIR CodeSystems and ValueSets both, and OID is the identifier of the value set. The following diagram describes this basic migration rule: 
@@ -23,7 +21,7 @@ Status of value set members will not be migrated, because only active value set 
 
 Currently, every locally defined code list has three columns: Valid from (Kehtivuse_alguse_kpv), Valid until (Kehtivuse_lõpu_kpv), and Last updated (Viimane_muudatus_kpv). These columns will not be migrated as the content of a ValueSet. Valid from and Valid until dates will be migrated as effectivePeriod. 'Last updated' column will have no significant meaning after migration, and it will not be migrated. 
 
-#### Scope of migration  
+### Scope of migration  
 
 The focus of the first migration:
 - terminology assets currently published and maintained by TEHIK,
@@ -39,7 +37,7 @@ Lower priority activities:
 
 Creating concept maps between all the versions is a manual effort and will take a longer period. Please contact us about special needs of your project.
 
-#### Version handling  
+### Version handling  
 
 An example ([Rhd kuuluvus](https://pub.e-tervis.ee/classifications/RhD%20kuuluvus))  
 
@@ -77,7 +75,7 @@ An example ([Rhd kuuluvus](https://pub.e-tervis.ee/classifications/RhD%20kuuluvu
 |280416009|selguseta|selguseta|Indeterminate result (qualifier value)||0|28.03.2019|||Eesti Laborimeditsiini Ühing|1|Märgitakse, kui labor ei suuda RhD kuuluvust määrata|
 {:.table-bordered .table-sm}
 
-#### Hierarchy in value sets  
+### Hierarchy in value sets  
 
 FHIR does not allow hierarchy in the value set. However, Estonian code lists have always been used not just for validation, but also for interface terminology, which means that hierarchy and grouper concepts have been a norm.
 
@@ -103,7 +101,7 @@ Such situation where the value set subsumption differs from code system subsumpt
 The value set includes these properties as default properties for expansion.  
 
 
-#### CodeSystem exceptions  
+### CodeSystem exceptions  
 
 Large code systems do not follow the common rules of migration. Each of the following code systems is handled individually.
 
