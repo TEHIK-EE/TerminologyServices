@@ -36,7 +36,7 @@
 |?**date** |Date of the last publishing.|  
 |**publisher** |TEHIK|
 |**contact** |andmekorraldus@tehik.ee|  
-|**description**| Short description of the resource. (Lühiiseloomustus selgitusfailis.)| 
+|**description**| Short description of the resource. (Lühiiseloomustus selgitusfailis.) For CodeSystem supplements, add "Supplement to [CodeSystem.Title]" (eesti keeles?) in the beginning of description.| 
 {:.table-bordered .table-sm}
 
 
@@ -44,8 +44,8 @@
 
 #### Deprecation rules
 
-**status** The status of a deprecated/inactive resource is **Retired**.  
-**version** The version will remain the same. The resource content does not change, except for _status_ and _description_.  
-**description** Description should clearly indicate that the resource is retired. Add 'Kehtetu' in front of the description.  
-**effectivePeriod** End date should be filled in.  
-**replacedBy** Add reference to the new resource if the new replacement has been created.  
+|**status** |The status of a deprecated/inactive resource is **Retired**.|
+|**version** |The version will remain the same. The resource content does not change, except for _status_ and _description_.|
+|**description** |Description should clearly indicate that the resource is retired. Add 'Kehtetu' in front of the description.|
+|**effectivePeriod** |End date should be filled in.|
+|**replacedBy** |Add reference to the new resource if the new replacement has been created.|
