@@ -3,7 +3,7 @@ Please see the [metadata logical model](StructureDefinition-Metadata.html) for f
 
 ***
 
-Iga loend ja koodisüsteem on varustatud metaandmestikuga. Metaandmete koosseisu on kokku pannud Klassifikaatorite ja koodiloendite koordinatsioonikogu, kuhu kuuluvad kodeeritud terminoloogiate eksperdid TEHIKust, Tervisekassast, Sotsiaalministeeriumist ja Tervise Arengu Instituudist. Metaandmestik moodustab klassifikaatori/koodiloendi passi. Siinses juhendis on metaandmestik avaldatud [loogilise andmemudelina](StructureDefinition-Metadata.html) ning profileeritud vastavate andmeelementidena.
+Iga loend ja koodisüsteem on varustatud metaandmestikuga. Metaandmete soovitusliku koosseisu on kokku pannud Klassifikaatorite ja koodiloendite koordinatsioonikogu, kuhu kuuluvad kodeeritud terminoloogiate eksperdid TEHIKust, Tervisekassast, Sotsiaalministeeriumist ja Tervise Arengu Instituudist. Metaandmestik moodustab klassifikaatori/koodiloendi passi. Siinses juhendis on metaandmestik avaldatud [loogilise andmemudelina](StructureDefinition-Metadata.html) ning profileeritud vastavate andmeelementidena.
 
 
 ### CodeSystem  
@@ -20,10 +20,10 @@ Iga loend ja koodisüsteem on varustatud metaandmestikuga. Metaandmete koosseisu
 |**status** |Normally a draft until publication, when it is set active.|  
 |**experimental** |By default, use 'false'. 'True' may be used for testing and proof of concepts, but these resources should normally not be available in production terminology server.|  
 |?**date** |Date of the last publishing.|  
-|**publisher** |TEHIK|
-|**contact** |andmekorraldus@tehik.ee|  
+|**publisher** |Usually 'TEHIK'|
+|**contact** |Usually 'andmekorraldus@tehik.ee'|  
 |**endorser**|Owner's name (organisation or group, preferrably not an individual). |
-|**description**| Short description of the resource. (Lühiiseloomustus selgitusfailis.)| 
+|**description**| Short description of the resource. (Lühiiseloomustus selgitusfailis; Klassifikaatori kirjeldus PubKeskuses.)| 
 |**useContext**||
 |**purpose**||
 |**codingPrinciples**||
@@ -54,8 +54,9 @@ Iga loend ja koodisüsteem on varustatud metaandmestikuga. Metaandmete koosseisu
 |**purpose**|Selgitusfail - kasutuskoht|
 |**codingPrinciples**|For SNOMED CT based value sets "Numeric codes, 6-18 characters long, normally parsed as strings". For others, see Selgitusfail - Koodi numbrite ja tähtede kombinatsioon|
 |**changeManagementDescription**|Uuendamissagedus selgitusfailis|
-|**displayName** |Veerg 'nimetus', v.a juhul, kui selgitusfailis on ette nähtud lühinimetuse veeru kasutamine|
 |**compose.property**|Codes of properties that should appear in default expansion (notSelectable, groupedBy/parent, ...)|
+|**displayName** |Veerg 'nimetus', v.a juhul, kui selgitusfailis on ette nähtud lühinimetuse veeru kasutamine|
+|**compose.include.system**|For SNOMED CT, use Estonian edition "http://snomed.info/sct/11000181102", because some concepts can be authored in the Estonian edition, and concepts may also move from Estonian to International and back. Estonian edition includes Estonian and International releases. Normally, version of the code system should not be specified, especially when very stable content from the code system is used.|
 {:.table-bordered .table-sm}
 
 
