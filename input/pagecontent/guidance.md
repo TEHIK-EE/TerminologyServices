@@ -69,6 +69,6 @@ Please see Migration chapter to learn more about migrating the content of [Publi
 
 ### Example queries | Näidispäringud
 
-TEHIK terminology server example queries
+[TEHIK terminology server example queries](https://github.com/TEHIK-EE/TerminologyServices/tree/master/input/images/request.http)
 
-[Ontoserver Postman collection](https://documenter.getpostman.com/view/634774/TVsuBmc9) by CSIRO
+[Ontoserver Postman collection](https://www.postman.com/jimsteel/workspace/ontoserver/collection/784165-fb95a213-ff25-4253-8b02-9368f2e59cc9) by CSIRO

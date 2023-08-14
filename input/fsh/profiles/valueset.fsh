@@ -24,7 +24,7 @@ Description: "Profile for the basic value set in TEHIK terminology server. Inclu
 // Add to migration
 
 * title 
-  * ^short = "Name of the value set, a human-readable well understood name"
+  * ^short = "Name of the value set, a human-readable well understood name. English name can be provided in the translation element."
   * ^definition = "Follows the pattern: ..."
 // Add to migration
 

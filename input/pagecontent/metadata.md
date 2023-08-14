@@ -61,6 +61,9 @@ Iga loend ja koodisüsteem on varustatud metaandmestikuga. Metaandmete soovitusl
 
 
 ### ConceptMap
+|**id** |For locally defined codesystems [name]-[version], character limit is 64. For externally defined resources, the original id can be retained.|
+|**url** |For locally defined valuesets [baseURL]/[ConceptMap]/[name]. For external valuesets, use the original URL if it exists.|
+|**title** |Human friendly descriptive name for the concept map.| 
 
 ### Deprecation rules
 
