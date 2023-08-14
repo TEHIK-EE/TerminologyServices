@@ -55,12 +55,6 @@
 ###
 {{host}}/CodeSystem/$lookup?system=http://snomed.info/sct&code=6012004&version=http://snomed.info/sct/11000181102
 
-###
-{{host}}/CodeSystem/$lookup?system=https://loinc.org/&code=LP6465-1
-
-###
-{{host}}/CodeSystem/$lookup?system=https://spor.ema.europa.eu/v1/lists/200000000004&code=100000073791
-
 
 # Validate code against a code system or its specific version (remove version section for default version). See FHIR documentation for more parameters.
 ###
@@ -93,18 +87,15 @@ content-type: application/json
 ###
 {{host}}/ValueSet
 
-# Get value set definition by id or name
+
+# Get value set definition by id
 ###
 {{host}}/ValueSet/40cdb547-28fa-4e8e-8eb1-7048fe269aa9
 
-# Get value set expansion by id or name. 
+# Get value set expansion by id 
 # This provides the default expansion of the value set if it has been defined.
 ###
 {{host}}/ValueSet/pharmaceutical-dose-form/$expand
-
-###
-{{host}}/ValueSet/cb55cc15-1f85-474f-b3f3-6f75a2ef2325/$expand
-# Get customised expansion and define which properties you want to be drawn from the code system.
 
 
 # METADATA REQUESTS
