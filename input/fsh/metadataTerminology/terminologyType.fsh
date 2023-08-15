@@ -1,2 +1,0 @@
-// klassifikaator
-// koodiloend
