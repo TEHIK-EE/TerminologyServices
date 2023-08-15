@@ -2,12 +2,12 @@ Instance: abivahendid-ja-meditsiiniseadmed-supplement
 InstanceOf: CodeSystem
 Usage: #example
 
-* title = "Abivahendid ja meditsiiniseadmed (Supplement)"
+* title = "Abivahendid ja meditsiiniseadmed. Koodisüsteemi lisa."
 * description = "Code System Supplement that provides custom hierarchy to be used in a specific value set"
 * url = "https://fhir.ee/CodeSystem/abivahendid-ja-meditsiiniseadmed-supplement"
 * version = "1.0.0"
 * status = #active
-* name = "AbivahendidJaMeditsiiniseadmedCSS"
+* name = "AbivahendidJaMeditsiiniseadmedSupplement"
 * compositional = false
 * content = #supplement
 * supplements = $SCT
@@ -95,6 +95,8 @@ Title: "Abivahendid ja meditsiiniseadmed"
 Description: "An excerpt from a medical devices value set used in Estonian health information system. This example represents a value set that has a hierarchy that does not match the hierarchy of the code system, and therefore needs a code system supplement to add the additional groupings."
 * url = "https://fhir.ee/ValueSet/abivahendid-ja-meditsiiniseadmed"
 * extension[http://hl7.org/fhir/StructureDefinition/valueset-supplement].valueCanonical = Canonical(abivahendid-ja-meditsiiniseadmed-supplement)
+* title = "Abivahendid ja meditsiiniseadmed"
+* description = "An excerpt from a medical devices value set used in Estonian health information system. This example represents a value set that has a hierarchy that does not match the hierarchy of the code system, and therefore needs a code system supplement to add the additional groupings."
 * identifier.system = "urn:ietf:rfc:3986"
 * identifier.value = "urn:oid:1.3.6.1.4.1.28284.6.2.1.321"
 * version = "4"

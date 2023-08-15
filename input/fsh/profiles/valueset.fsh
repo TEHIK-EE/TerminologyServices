@@ -44,7 +44,7 @@ Description: "Profile for the basic value set in TEHIK terminology server. Inclu
   * ^short = "Short description of the value set"
 
 * purpose
-  * ^short = "Overview of the purpose, content, and usage of the value set "
+  * ^short = "Overview of the purpose, content, and usage of the value set"
 
 * useContext 0..*
   * valueCodeableConcept 1..1

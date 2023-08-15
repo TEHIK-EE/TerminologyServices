@@ -7,8 +7,8 @@ Iga loend ja koodisüsteem on varustatud metaandmestikuga. Metaandmete soovitusl
 
 ### Common rules for all resources
 
-**For externally defined terminology assets (HL7 or other), original metadata is kept for id, url, name, and title. Estonian title can be added.**  
-Default baseURL is **https://fhir.ee/**  
+- For externally defined terminology assets (HL7 or other), original metadata is kept for id, url, name, and title. Estonian title can be added.  
+- Default baseURL is **https://fhir.ee/**  
 
 |**id**|For locally defined terminology assets, use the title in lowercase, spaces replaced with hyphens (-), characters replaced as follows: ä-a, ö-o, õ-o, ü-y, š-sh, ž-zh, special characters omitted. Character limit is ... 64?|
 |**url**|For locally defined terminology assets, use [baseURL]/[resource type]/[id]|
@@ -25,13 +25,10 @@ Default baseURL is **https://fhir.ee/**
 
 ### CodeSystem  
 
-|**id** |For regular CodeSystems, see guidance under common rules.  
-For CodeSystem supplements, estimate the usage of the supplement. For supplements that are created for one specific ValueSet, use formula "[ValueSet id]-supplement". For independent CodeSystem supplements, use formula "[CodeSystem id]-[scope]".|
+|**id** |For regular CodeSystems, see guidance under common rules. For CodeSystem supplements, estimate the usage of the supplement. For supplements that are created for one specific ValueSet, use formula "[ValueSet id]-supplement". For independent CodeSystem supplements, use formula "[CodeSystem id]-[scope]", which should match the title.|
 |**meta.profile** |Minimally HL7 Shareable CodeSystem profile [https://www.hl7.org/fhir/shareablecodesystem.html](https://www.hl7.org/fhir/shareablecodesystem.html). It is expected that all locally defined resources use the profile defined in this implementation guide.|
-|**url** |Follows pattern [baseURL]/[resource type]/[id] - https://fhir.ee/CodeSystem/[id]|
-|**title** |Common name of the code system. Human friendly and descriptive. Acronyms are allowed when the code system is more likely to be known by the acronym than the full name. Do not include resource type in the name (e.g 'CodeSystem', 'CS').  
-For CodeSystem supplements, use the key word 'Supplement' in the end of the title.
-Title is typically in Estonian, and the English translation is in the translation element.|  
+|**url**|Follows pattern [baseURL]/[resource type]/[id] - https://fhir.ee/CodeSystem/[id]|
+|**title** |Common name of the code system. Human friendly and descriptive. Acronyms are allowed when the code system is more likely to be known by the acronym than the full name. Do not include resource type in the name (e.g 'CodeSystem', 'CS'). For CodeSystem supplements, use the key word 'Supplement' in the end of the title. Title is typically in Estonian, and the English translation is in the translation element.|  
 |**otherTitle**|Additional name of the CodeSystem in case it is known by names other than the Title.|
 |**description**|Short description of the resource. This should be only a few lines of text. (Lühiiseloomustus selgitusfailis; Klassifikaatori kirjeldus PubKeskuses.)| 
 |**purpose**|Longer description about the purpose and usage of the CodeSystem. This can include a link to a dedicated web page with more information.|
@@ -44,8 +41,8 @@ Title is typically in Estonian, and the English translation is in the translatio
 
 ### ValueSet  
 
-See also guidance under common rules.  
-ValueSet that uses a CodeSystem supplement, needs the relevant extension.  
+- See also guidance under common rules.  
+- ValueSet that uses a CodeSystem supplement, needs the relevant extension.  
 
 |**meta.profile** |Minimally HL7 Shareable ValueSet profile [https://www.hl7.org/fhir/shareablevalueset.html](https://www.hl7.org/fhir/shareablevalueset.html). It is expected that all locally defined resources use the profile defined in this implementation guide.|
 |**url** |Follows pattern [baseURL]/[resource type]/[id] - https://fhir.ee/ValueSet/[id]|
@@ -63,8 +60,8 @@ ValueSet that uses a CodeSystem supplement, needs the relevant extension.
 ### ConceptMap
 
 |**url** |Follows pattern [baseURL]/[resource type]/[id] - https://fhir.ee/ConceptMap/[id]|
-|**title** |ConceptMap between ValueSet versions follows pattern "[ValueSet's Estonian title] v[source version]-v[target version] vastendus". ConceptMap between different CodeSystems follows pattern "[Source CodeSystem title] - [Target CodeSystem title] vastendus [scope].
-For English titles, 'vastendus' is replaced with 'Concept Map' and source and target titles are also in English.|
+|**title** |ConceptMap between ValueSet versions follows pattern "[ValueSet's Estonian title] v[source version]-v[target version] vastendus". ConceptMap between different CodeSystems follows pattern "[Source CodeSystem title] - [Target CodeSystem title] vastendus [scope]. For English titles, 'vastendus' is replaced with 'Concept Map' and source and target titles are also in English.|
+{:.table-bordered .table-sm}
 
 ### Deprecation rules
 
@@ -73,3 +70,4 @@ For English titles, 'vastendus' is replaced with 'Concept Map' and source and ta
 |**description** |Description should clearly indicate that the resource is retired. Add 'Kehtetu' in front of the description.|
 |**effectivePeriod** |End date should be filled in.|
 |**replacedBy** |Add reference to the new resource if the new replacement has been created.|
+{:.table-bordered .table-sm}
