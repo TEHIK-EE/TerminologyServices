@@ -12,7 +12,7 @@ Default baseURL is **https://fhir.ee/**
 
 |**id**|For locally defined terminology assets, use the title in lowercase, spaces replaced with hyphens (-), characters replaced as follows: ä-a, ö-o, õ-o, ü-y, š-sh, ž-zh, special characters omitted. Character limit is ... 64?|
 |**url**|For locally defined terminology assets, use [baseURL]/[resource type]/[id]|
-|**name**|For locally defined terminology assets, use the title in PascalCase (all words start with capital letter), remove spaces, characters replaced as follows: ä-a, ö-o, õ-o, ü-y, š-sh, ž-zh, special characters omitted. Numbers and "_" are allowed.|
+|**name**|For locally defined terminology assets, use the title in PascalCase (all words start with capital letter), remove spaces, characters replaced as follows: ä-a, ö-o, õ-o, ü-y, š-sh, ž-zh, special characters omitted. Numbers and "_" are allowed. Acronyms can stay all-upper-case.|
 |**identifier (OID)** |OID identifier is represented as an URN. Identifier.system is urn:ietf:rfc:3986. Identifier.value in format urn:oid:1.2.3. Typically assigned to ValueSets or international CodeSystems.|
 |**status** |Normally a draft until publication, when it is set active.|  
 |**experimental** |By default, use 'false'. 'True' may be used for testing and proof of concepts, but these resources should normally not be available in production terminology server.| 
