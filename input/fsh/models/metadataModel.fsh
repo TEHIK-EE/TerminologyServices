@@ -24,19 +24,19 @@ Description: "Klassifikaatori/koodiloendi pass. Logical model for metadata for a
 * basedOn 0..* Reference "Source terminology." "Alusklassifikaator."
 
 * relatedTerminologyAsset 0..* BackboneElement "Related terminology that is not technically the source it's directly based on" ""
-  * relatedTerminologyReference 0..1 Reference "Related terminology asset's URL" ""
-  * relatedTerminologyDescription 0..1 string "Description how this terminology is related"
+  * reference 0..1 Reference "Related terminology asset's URL" ""
+  * description 0..1 string "Description how this terminology is related"
 
 * guidance 0..* BackboneElement "Guidance related to the terminology asset, textual or referenced" "Juhendmaterjalid teksti või viidetena"
-  * guidanceOnUsage 0..1 string "Textual guidance about the usage of the terminology asset. Automated list of usage locations (CDA documents/templates, FHIR IGs/resources)" "Kasutuskohad (vorming, andmeelement) ja kasutusreeglid."
-  * guidanceDocuments 0..* url "Links to additional guidance material" "Kodeerimisjuhised, kasutusjuhendid vms"
+  * usage 0..1 string "Textual guidance about the usage of the terminology asset. Automated list of usage locations (CDA documents/templates, FHIR IGs/resources)" "Kasutuskohad (vorming, andmeelement) ja kasutusreeglid."
+  * manual 0..* url "Links to additional guidance material" "Kodeerimisjuhised, kasutusjuhendid vms"
   * codingPrinciples 0..1 BackboneElement "Short guidance about the structure of the code system (hierarchy, code creation, etc)" "Kodeerimisreeglid"
   * changeManagementInformation 1..1 string "Guidance on change management and release cycles" "Muudatuste halduse sagedus, sh uuendamissagedus ja ajakava"
 
 * relatedAct 0..* BackboneElement "Related legal acts" "Seos õigusaktidega"
-  * relatedActURL 0..1 string "URL to the related legal act" "Seotud õigusakti URL Riigi Teatajas"
-  * relatedActName 0..1 string "Name of the related legal act" "Seotud õigusakti nimetus" 
-  * relatedActDescription 0..1 string "Explanation about how the documented legal act is related to the terminology asset" "Seotud õigusakti ja selle seose kohta käib sisuline selgitus"
+  * url 0..1 uri "URL to the related legal act" "Seotud õigusakti URL Riigi Teatajas"
+  * name 0..1 string "Name of the related legal act" "Seotud õigusakti nimetus" 
+  * description 0..1 string "Explanation about how the documented legal act is related to the terminology asset" "Seotud õigusakti ja selle seose kohta käib sisuline selgitus"
 
 * datePublication 1..1 date "Date the terminology asset was published" "Avaldamise kuupäev"
 * dateLastUpdate 1..1 date "Date of the last update" "Viimase muudatuse kuupäev"
