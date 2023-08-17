@@ -28,9 +28,9 @@ Description: "Klassifikaatori/koodiloendi pass. Logical model for metadata for a
   * description 0..1 string "Description how this terminology is related"
 
 * guidance 0..* BackboneElement "Guidance related to the terminology asset, textual or referenced" "Juhendmaterjalid teksti või viidetena"
-  * usage 0..1 string "Textual guidance about the usage of the terminology asset. Automated list of usage locations (CDA documents/templates, FHIR IGs/resources)" "Kasutuskohad (vorming, andmeelement) ja kasutusreeglid."
+  * usage 0..1 string "Textual guidance about the usage of the terminology asset." "Kasutuskohad (vorming, andmeelement) ja kasutusreeglid."
   * manual 0..* url "Links to additional guidance material" "Kodeerimisjuhised, kasutusjuhendid vms"
-  * codingPrinciples 0..1 BackboneElement "Short guidance about the structure of the code system (hierarchy, code creation, etc)" "Kodeerimisreeglid"
+  * codingPrinciples 0..1 string "Short guidance about the structure of the code system (hierarchy, code creation, etc)" "Kodeerimisreeglid"
   * changeManagementInformation 1..1 string "Guidance on change management and release cycles" "Muudatuste halduse sagedus, sh uuendamissagedus ja ajakava"
 
 * relatedAct 0..* BackboneElement "Related legal acts" "Seos õigusaktidega"

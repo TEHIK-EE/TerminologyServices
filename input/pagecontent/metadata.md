@@ -10,9 +10,9 @@ Iga loend ja koodisüsteem on varustatud metaandmestikuga. Metaandmete soovitusl
 - For externally defined terminology assets (HL7 or other), original metadata is kept for id, url, name, and title. Estonian title can be added.  
 - Default baseURL is **https://fhir.ee/**  
 
-|**id**|For locally defined terminology assets, use the title in lowercase, spaces replaced with hyphens (-), characters replaced as follows: ä-a, ö-o, õ-o, ü-y, š-sh, ž-zh, special characters omitted. Character limit is ... 64?|
+|**id**|For locally defined terminology assets, use the title in lowercase, spaces replaced with hyphens (-), characters replaced as follows: ä-a, ö-o, õ-o, ü-y, š-sh, ž-zh, special characters omitted. Character limit is 30 characters (40 for legacy content). If the title is significantly longer, shorten it logically to fit the character limit and still carry the information of the original title.|
 |**url**|For locally defined terminology assets, use [baseURL]/[resource type]/[id]|
-|**name**|For locally defined terminology assets, use the title in PascalCase (all words start with capital letter), remove spaces, characters replaced as follows: ä-a, ö-o, õ-o, ü-y, š-sh, ž-zh, special characters omitted. Numbers and "_" are allowed. Acronyms can stay all-upper-case.|
+|**name**|For locally defined terminology assets, use the title in PascalCase (all words start with capital letter), remove spaces, characters replaced as follows: ä-a, ö-o, õ-o, ü-y, š-sh, ž-zh, special characters omitted. Numbers and "_" are allowed. Acronyms can stay all-upper-case. Character limit is 30 characters. If the title is significantly longer, shorten it logically to fit the character limit and still carry the information of the original title.|
 |**identifier (OID)** |OID identifier is represented as an URN. Identifier.system is urn:ietf:rfc:3986. Identifier.value in format urn:oid:1.2.3. Typically assigned to ValueSets or international CodeSystems.|
 |**status** |Normally a draft until publication, when it is set active.|  
 |**experimental** |By default, use 'false'. 'True' may be used for testing and proof of concepts, but these resources should normally not be available in production terminology server.| 
@@ -28,7 +28,7 @@ Iga loend ja koodisüsteem on varustatud metaandmestikuga. Metaandmete soovitusl
 |**id** |For regular CodeSystems, see guidance under common rules. For CodeSystem supplements, estimate the usage of the supplement. For supplements that are created for one specific ValueSet, use formula "[ValueSet id]-supplement". For independent CodeSystem supplements, use formula "[CodeSystem id]-[scope]", which should match the title.|
 |**meta.profile** |Minimally HL7 Shareable CodeSystem profile [https://www.hl7.org/fhir/shareablecodesystem.html](https://www.hl7.org/fhir/shareablecodesystem.html). It is expected that all locally defined resources use the profile defined in this implementation guide.|
 |**url**|Follows pattern [baseURL]/[resource type]/[id] - https://fhir.ee/CodeSystem/[id]|
-|**title** |Common name of the code system. Human friendly and descriptive. Acronyms are allowed when the code system is more likely to be known by the acronym than the full name. Do not include resource type in the name (e.g 'CodeSystem', 'CS'). For CodeSystem supplements, use the key word 'Supplement' in the end of the title. Title is typically in Estonian, and the English translation is in the translation element.|  
+|**title** |Common name of the code system. Human friendly and descriptive. Acronyms are allowed when the code system is more likely to be known by the acronym than the full name. Do not include resource type in the name (e.g 'CodeSystem', 'CS'), and keep the title short (additional information should belong to description). For CodeSystem supplements, use the key word _Supplement/Lisand_ in the end of the title. Title is typically in Estonian, and the English translation is in the translation element.|  
 |**otherTitle**|Additional name of the CodeSystem in case it is known by names other than the Title.|
 |**description**|Short description of the resource. This should be only a few lines of text. (Lühiiseloomustus selgitusfailis; Klassifikaatori kirjeldus PubKeskuses.)| 
 |**purpose**|Longer description about the purpose and usage of the CodeSystem. This can include a link to a dedicated web page with more information.|
@@ -46,7 +46,8 @@ Iga loend ja koodisüsteem on varustatud metaandmestikuga. Metaandmete soovitusl
 
 |**meta.profile** |Minimally HL7 Shareable ValueSet profile [https://www.hl7.org/fhir/shareablevalueset.html](https://www.hl7.org/fhir/shareablevalueset.html). It is expected that all locally defined resources use the profile defined in this implementation guide.|
 |**url** |Follows pattern [baseURL]/[resource type]/[id] - https://fhir.ee/ValueSet/[id]|
-|**identifier (OID)** |When CodeSystem and ValueSet are the same list, OID is assigned to the ValueSet.|    
+|**identifier (OID)** |When CodeSystem and ValueSet are the same list, OID is assigned to the ValueSet.| 
+|**title**|Common name of the value set. Human friendly and descriptive. Acronyms are allowed. Do not include resource type in the name (e.g 'ValueSet', 'vS'), and keep the title short (additional information should belong to description).|   
 |**description**| Short description of the resource. (Lühiiseloomustus selgitusfailis.)|
 |**useContext**|Pick appropriate concept from the value set|
 |**purpose**|Longer description about the purpose and usage of the ValueSet. Selgitusfail - kasutuskoht|
@@ -60,7 +61,9 @@ Iga loend ja koodisüsteem on varustatud metaandmestikuga. Metaandmete soovitusl
 ### ConceptMap
 
 |**url** |Follows pattern [baseURL]/[resource type]/[id] - https://fhir.ee/ConceptMap/[id]|
-|**title** |ConceptMap between ValueSet versions follows pattern "[ValueSet's Estonian title] v[source version]-v[target version] vastendus". ConceptMap between different CodeSystems follows pattern "[Source CodeSystem title] - [Target CodeSystem title] vastendus [scope]. For English titles, 'vastendus' is replaced with 'Concept Map' and source and target titles are also in English.|
+|**title** |ConceptMap between ValueSet versions follows pattern "[ValueSet's Estonian title] v[source version]-v[target version] vastendus". ConceptMap between different CodeSystems follows pattern "[Source CodeSystem title] - [Target CodeSystem title] vastendus [scope]. For English titles, 'vastendus' is replaced with 'Map' and source and target titles are also in English. Keep the title short and to the point.|
+|**description**|Short description of the mapping. Brief mention of the scope or use case this mapping serves.|
+|**purpose**|Longer description about the purpose and usage of the ConceptMap. Include warnings, disclaimers, and implementation considerations if needed.|
 {:.table-bordered .table-sm}
 
 ### Deprecation rules
