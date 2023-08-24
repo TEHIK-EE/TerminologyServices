@@ -10,13 +10,22 @@ Description: "Profile for the basic code system in TEHIK terminology server. The
   * ^definition = "Follows the pattern 'https://fhir.ee/CodeSystem/[Resource Id]'"
 // Add to migration
 
-* extension contains guidance-material named changeManagementDescription 1..1
+* extension ^slicing.discriminator.type = #value
+* extension ^slicing.discriminator.path = "url"
+* extension ^slicing.rules = #open
+* extension contains guidance-material named changeManagementDescription 0..1
+  and guidance-material named codingPrinciples 0..1
+  and $otherNameLocalized named otherTitle 0..*
+
 * extension[changeManagementDescription] 
   * ^short = "Description of change management: change requests, release cycles, etc"
 
-* extension contains guidance-material named codingPrinciples 1..1
 * extension[codingPrinciples] 
   * ^short = "Description of coding principles: structure of codes, hierarchy, etc."
+
+//* extension contains CSOtherName named otherTitle 0..*
+* extension[otherTitle] 
+  * ^short = "Other human-readable title for the code system"
 
 * identifier
   * ^slicing.discriminator.type = #pattern
@@ -34,9 +43,6 @@ Description: "Profile for the basic code system in TEHIK terminology server. The
   * ^short = "Name of the code system, a human-readable well understood name"
   * ^definition = "Follows the pattern: ..."
 // Add to migration
-
-* extension contains CSOtherName named otherTitle 0..*
-  * ^short = "Other human-readable title for the code system"
 
 * name 1..1
   * ^short = "Computer-friendly name/identifier to be used for machine-processing"

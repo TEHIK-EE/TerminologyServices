@@ -1,5 +1,5 @@
 Instance: abivahendid-ja-meditsiiniseadmed-supplement
-InstanceOf: CodeSystem
+InstanceOf: TehikCodeSystem
 Usage: #example
 
 * title = "Abivahendid ja meditsiiniseadmed. Koodisüsteemi lisa."
@@ -8,12 +8,24 @@ Usage: #example
 * version = "1.0.0"
 * status = #active
 * name = "AbivahendidJaMeditsiiniseadmedSupplement"
+
+* extension[0].url = $otherNameLocalized 
+* extension[0].extension[0].url = "name"
+* extension[0].extension[=].valueString = "Aids and medical devices"
+* extension[0].extension[+].url = "lang"
+* extension[0].extension[=].valueCode = #en
+* extension[0].extension[+].url = "type"
+* extension[0].extension[=].valueCode = #title
+
 * compositional = false
 * content = #supplement
 * supplements = $SCT
 * versionNeeded = true
 * experimental = true
 * publisher = "TEHIK"
+* endorser.name = "TEHIK"
+* caseSensitive = false
+* contact.telecom.system = #email
 * property[0].code = #groupedBy
 * property[=].type = #code
 * property[+].code = #notSelectable
