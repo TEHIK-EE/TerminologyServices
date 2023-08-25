@@ -1,5 +1,6 @@
 Alias: $otherName = http://hl7.org/fhir/StructureDefinition/codesystem-otherName
 Alias: $otherNameLocalized = https://fhir.ee/StructureDefinition/other-name-localized
+Alias: $translation = http://hl7.org/fhir/StructureDefinition/translation
 
 // TODO A complex extension, that contains a markdown and a link (uri + link name). Or just use markdown and add the links there.
 Extension: GuidanceMaterial

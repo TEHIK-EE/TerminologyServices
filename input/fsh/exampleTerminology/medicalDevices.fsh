@@ -17,6 +17,12 @@ Usage: #example
 * extension[0].extension[+].url = "type"
 * extension[0].extension[=].valueCode = #title
 
+* title.extension[0].url = $translation
+* title.extension[=].extension[0].url = "lang"
+* title.extension[=].extension[=].valueCode = #en
+* title.extension[=].extension[+].url = "content"
+* title.extension[=].extension[=].valueString = "Aids and medical devices"
+
 * compositional = false
 * content = #supplement
 * supplements = $SCT
