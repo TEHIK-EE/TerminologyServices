@@ -19,8 +19,8 @@ Parent: http://hl7.org/fhir/StructureDefinition/codesystem-otherName
 * ^publisher = "HL7 Estonia"
 * ^context.type = #element
 * ^context.expression = "Resource"
-* . ^short = "Any additional localized name."
-* . ^definition = "Täiendavad kirjeldused."
+* . ^short = "Any additional localized name"
+* . ^definition = "The name in a given language and of certain type. For example, short name in English (e.g ICD-10)."
 * extension contains lang 0..1 and type 0..1
 * extension[lang] only Extension
 * extension[lang] ^short = "Code for Language"
