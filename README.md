@@ -15,6 +15,6 @@ Canonical / permanent URL:
 Issues and change requests are managed here:  
 
 Issues:  __https://github.com/TEHIK-EE/TerminologyServices/issues__  
-
+ 
 
 ---
