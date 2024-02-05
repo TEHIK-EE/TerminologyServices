@@ -69,7 +69,7 @@ Description: "Profile for the basic code system in TEHIK terminology server. The
 * publisher 1..1
   * ^short = "The maintainer/publisher of the code system. For international code systems, the publisher might be the national release maintainer."
 * contact 1..*
-* endorser 0..1 
+* author 0..1 
   * ^short = "Owner of the code system. Organisation/group who is responsible for the content of the code system. For international code systems, the owner might be the national release owner."
   * name 1..1
     * ^short = "Name of the organisation/group."

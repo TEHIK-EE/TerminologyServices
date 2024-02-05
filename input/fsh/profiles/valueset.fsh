@@ -59,7 +59,7 @@ Description: "Profile for the basic value set in TEHIK terminology server. Inclu
 * publisher 1..1
   * ^short = "The original maintainer/publisher of the value set."
 * contact 1..*
-* endorser 0..1 
+* author 0..1 
   * ^short = "Owner of the value set. Organisation/group who is responsible for the content of the value set."
   * name 1..1
     * ^short = "Name of the organisation/group."
