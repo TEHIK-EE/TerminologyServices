@@ -5,9 +5,9 @@ In FHIR, there is no main object for a ValueSet or CodeSystem. Every FHIR resour
 <img src="versioning1.JPG" alt="Every resource is its version"/>
 <br clear="all"/>
 
-For example, if we have resources CodeSystem/RHK10--8 and CodeSystem/RHK10--9. These would be version 8 and 9 of code system RHK10 (ICD-10). We can these resources are different versions of the same CodeSystem, because they share the same values for data elements: **CodeSystem.url** and **CodeSystem.name**.
+For example, if we have resources CodeSystem/RHK10\-\-8 and CodeSystem/RHK10\-\-9. These would be version 8 and 9 of code system RHK10 (ICD-10). We can these resources are different versions of the same CodeSystem, because they share the same values for data elements: **CodeSystem.url** and **CodeSystem.name**.
 
-Each version has its own **id** and **effectivePeriod**. The rest of the metadata may or may not change through the lifecycle of a terminology resource. Id of the resource can be any unique character combination that follows the rules provided in the FHIR standard. In TEHIK's terminology server, the id contains the abstract object's name and the version number, separated by two dashes: *apgari-komponendid/-/-2.0.0*.
+Each version has its own **id** and **effectivePeriod**. The rest of the metadata may or may not change through the lifecycle of a terminology resource. Id of the resource can be any unique character combination that follows the rules provided in the FHIR standard. In TEHIK's terminology server, the id contains the abstract object's name and the version number, separated by two dashes: *apgari-komponendid\-\-2.0.0*.
 
 All resources that are primarily published in TEHIK FHIR terminology server, use the namespace https://fhir.ee/. Organisation specific namespaces are avoided as the responsible organisation or its name might change, but changing the canonical URL would cause a huge disruption in services. 
 
