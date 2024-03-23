@@ -15,12 +15,14 @@ All resources that are primarily published in TEHIK FHIR terminology server, use
 
 OIDs are typically not used in FHIR, and the main identifier for a code system or a value set is in the **url** element. 
 
-However, the same value sets and code systems are also used in CDA and V3, so all migrated terminology resources carry OID in the **identifier** element. The old way of publishing did not  distinguish code systems from value sets, and for that reason the OIDs are added to the CodeSystem resource as well as related ValueSet resource. This is done in order to simplify the transition from old system to new. However, this approach is not logically correct, because two different objects should not carry the same OID. Please contact us if this causes any issues in your FHIR tooling.
+However, the same value sets and code systems are also used in CDA and V3, so all migrated terminology resources carry OID in the **identifier** element. 
 
-Version OIDs are also provided in the **identifier** element with **type** version.
+Version OIDs are also provided in the same **identifier** element with **type** version.
 
 <img src="oid-url.JPG" alt="Relationship between OID and URL"/>
 <br clear="all"/> 
+
+The old way of publishing did not  distinguish code systems from value sets, and for that reason the OIDs are added to the CodeSystem resource as well as related ValueSet resource. This is done in order to simplify the transition from old system to new. However, this approach is not logically correct, because two different objects should not carry the same OID. Please contact us if this causes any issues in your FHIR tooling.
 
 In FHIR terminology resources, business version is provided in the **version** element.
 Also, there is an element **versionId** that is inherited from **Resource.Meta** data type, and this carries a server side version of the specific resource. This element should be ignored in most cases.
@@ -30,9 +32,9 @@ To track any server-side change, **lastUpdated** element can be used. All change
 
 ### Semantic versioning
 
-Since launching the FHIR terminology services, most code systems and value sets move to semantic versioning. This means, that if the version number in the old system was 2, and the OID of that version was OID.2, the business version in FHIR is 2.0.0.
+Moving to the FHIR terminology services, most code systems and value sets start using semantic versioning. This means, that if the version number in the old system was 2, and the OID of that version was OID.2, the business version in FHIR is 2.0.0.
 
-Every change will trigger a new version in FHIR, but only major new version trigger the increase of OID version number. For example:
+Every change will trigger a new version in FHIR, but only major new version triggers the increase of OID version number. For example:
 
 * **2.0.0** corresponds to OID.**2**
 * **2.0.2** corresponds to OID.**2**
