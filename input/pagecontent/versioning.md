@@ -57,5 +57,6 @@ Only the first digit change (major change) triggers issuing a new version OID.
 
 Code systems authored outside our tooling or having a history of using date as a version will continue to use the same versioning system.
 
-Extra attention should be turned to SNOMED CT versioning. In short communication SNOMED CT versions are usually distinguished by the release date. However, in FHIR messaging, Estonian edition of SNOMED CT is considered a version on its own (*"version": "http://snomed.info/sct/11000181102"*), and a specific version of Estonian edition adds a date as a version of this version (*"version": "http://snomed.info/sct/11000181102/version/20230530"*). 
+Extra attention should be turned to SNOMED CT versioning. In short communication SNOMED CT versions are usually distinguished by the release date.  
+However, in FHIR messaging, Estonian edition of SNOMED CT is considered a version on its own (*"version": "http://snomed.info/sct/11000181102"*), and a specific version of Estonian edition adds a date as a version of this version (*"version": "http://snomed.info/sct/11000181102/version/20230530"*). 
 

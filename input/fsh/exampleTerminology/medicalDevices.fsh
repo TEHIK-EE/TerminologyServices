@@ -22,11 +22,7 @@ Usage: #example
 * title.extension[=].extension[=].valueCode = #en
 * title.extension[=].extension[+].url = "content"
 * title.extension[=].extension[=].valueString = "Aids and medical devices"
-* title.extension[+].url = $translation
-* title.extension[=].extension[0].url = "lang"
-* title.extension[=].extension[=].valueCode = #ru
-* title.extension[=].extension[+].url = "content"
-* title.extension[=].extension[=].valueString = "Вспомогательные средства и медицинское оборудование"
+
 
 * compositional = false
 * content = #supplement
@@ -34,7 +30,7 @@ Usage: #example
 * versionNeeded = true
 * experimental = true
 * publisher = "TEHIK"
-* endorser.name = "TEHIK"
+* author.name = "TEHIK"
 * caseSensitive = false
 * contact.telecom.system = #email
 * property[0].code = #groupedBy

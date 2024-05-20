@@ -43,32 +43,17 @@ Mapping between concepts is usually dependant on the context. For example, consi
 
 Read more about [ConceptMap resource](https://hl7.org/fhir/conceptmap.html)  
 
+TEHIK terminology server contains a few ConceptMaps. In the future, transitions from one code system to another will be described using ConceptMap resource.
 
 #### NamingSystem
 
 Read more about [NamingSystem resource](https://hl7.org/fhir/namingsystem.html)  
-
-### Available content | Avaldatud sisu
-
-#### SNOMED CT
-Terminology server contains the international and Estonian edition of SNOMED CT terminology. Full SNOMED CT content is available for validation or information, also many Estonian value sets are based on SNOMED CT and published as FHIR value sets or SNOMED CT simple reference sets.
-The concepts and value sets based on SNOMED CT are freely queriable. Please take into account that it is not possible to download full SNOMED CT from terminology server due to its size. It is possible to query single concepts, list of concepts matching a property or ECL expression, or any value set or concept map that uses SNOMED CT. 
-
-Estonian edition, together its underlying international edition, is updated twice a year: May 30 and November 30. Using full SNOMED CT is free for anyone from Estonia or any other SNOMED member countries. To access the release files, please go to [licence management portal](https://mlds.ihtsdotools.org/#/landing/EE?lang=en) and register.  
-
-More information from **snomed@tehik.ee**. 
-
-#### ICD-10 (RHK-10)
-ICD-10 newest Estonian version (also available at [https://rhk.sm.ee/](https://rhk.sm.ee/)) will be available soon.
-
-#### Health information system value sets
-Please see Migration chapter to learn more about migrating the content of [Publitseerimiskeskus](https://pub.e-tervis.ee/classifications).
-
-#### Medication and prescription related value sets
+In the first phase, NamingSystems are not in use in TEHIK terminology server.
 
 
 ### Example queries | Näidispäringud
 
-[TEHIK terminology server example queries](https://github.com/TEHIK-EE/TerminologyServices/tree/master/input/images/tehik-ts-postman-collection.json)
+* [TEHIK terminology server example queries](https://github.com/TEHIK-EE/TerminologyServices/tree/master/input/images/tehik-ts-postman-collection.json)  
 
-[Ontoserver Postman collection](https://www.postman.com/jimsteel/workspace/ontoserver/collection/784165-fb95a213-ff25-4253-8b02-9368f2e59cc9) by CSIRO
+* [Ontoserver Postman collection](https://www.postman.com/jimsteel/workspace/ontoserver/collection/784165-fb95a213-ff25-4253-8b02-9368f2e59cc9) by CSIRO  
+

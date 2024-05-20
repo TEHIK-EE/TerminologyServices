@@ -16,11 +16,11 @@ Iga loend ja koodisüsteem on varustatud metaandmestikuga. Metaandmete soovitusl
 |**identifier (OID)** |OID identifier is represented as an URN. Identifier.system is urn:ietf:rfc:3986. Identifier.value in format urn:oid:1.2.3. Typically assigned to ValueSets or international CodeSystems.|
 |**status** |Normally a draft until publication, when it is set active.|  
 |**experimental** |By default, use 'false'. 'True' may be used for testing and proof of concepts, but these resources should normally not be available in production terminology server.| 
-|**version**| Version according to the current logic. If dates are used, YYYY-MM-DD format is preferred. For numbering, X.Y is preferred, where X is increased in case of content update, and Y is increased in case of insignificant changes (typos in descriptions, guidance texts slightly changed in metadata). For external resources, original versioning is preserved.|  
-|**versioningAlgorithm**||
+|**version**|Version according to the current logic (see [versioning](versioning.html)). If dates are used, YYYY-MM-DD format is preferred. For external resources, original versioning is preserved.|  
+|**versioningAlgorithm**|Usually 'semver'. For external resources, original versioning is preserved.|
 |**publisher** |Usually 'TEHIK'|
 |**contact** |Usually 'andmekorraldus@tehik.ee'|  
-|**endorser**|Owner's name (organisation or group, preferrably not an individual).|
+|**author**|Owner's name (organisation or group, preferrably not an individual).|
 {:.table-bordered .table-sm}
 
 ### CodeSystem  
@@ -28,6 +28,7 @@ Iga loend ja koodisüsteem on varustatud metaandmestikuga. Metaandmete soovitusl
 |**id** |For regular CodeSystems, see guidance under common rules. For CodeSystem supplements, estimate the usage of the supplement. For supplements that are created for one specific ValueSet, use formula "[ValueSet id]-supplement". For independent CodeSystem supplements, use formula "[CodeSystem id]-[scope]", which should match the title.|
 |**meta.profile** |Minimally HL7 Shareable CodeSystem profile [https://www.hl7.org/fhir/shareablecodesystem.html](https://www.hl7.org/fhir/shareablecodesystem.html). It is expected that all locally defined resources use the profile defined in this implementation guide.|
 |**url**|Follows pattern [baseURL]/[resource type]/[id] - https://fhir.ee/CodeSystem/[id]|
+|**identifier (OID)** |When CodeSystem and ValueSet are the same list, OID is assigned to the ValueSet and CodeSystem both. Version OID uses the type 'version'.| 
 |**title** |Common name of the code system. Human friendly and descriptive. Acronyms are allowed when the code system is more likely to be known by the acronym than the full name. Do not include resource type in the name (e.g 'CodeSystem', 'CS'), and keep the title short (additional information should belong to description). For CodeSystem supplements, use the key word _Supplement/Lisand_ in the end of the title. Title is typically in Estonian, and the English translation is in the translation element.|  
 |**otherTitle**|Additional name of the CodeSystem in case it is known by names other than the Title.|
 |**description**|Short description of the resource. This should be only a few lines of text. (Lühiiseloomustus selgitusfailis; Klassifikaatori kirjeldus PubKeskuses.)| 
@@ -46,10 +47,9 @@ Iga loend ja koodisüsteem on varustatud metaandmestikuga. Metaandmete soovitusl
 
 |**meta.profile** |Minimally HL7 Shareable ValueSet profile [https://www.hl7.org/fhir/shareablevalueset.html](https://www.hl7.org/fhir/shareablevalueset.html). It is expected that all locally defined resources use the profile defined in this implementation guide.|
 |**url** |Follows pattern [baseURL]/[resource type]/[id] - https://fhir.ee/ValueSet/[id]|
-|**identifier (OID)** |When CodeSystem and ValueSet are the same list, OID is assigned to the ValueSet.| 
+|**identifier (OID)** |When CodeSystem and ValueSet are the same list, OID is assigned to the ValueSet and CodeSystem both. Version OID uses the type 'version'.| 
 |**title**|Common name of the value set. Human friendly and descriptive. Acronyms are allowed. Do not include resource type in the name (e.g 'ValueSet', 'vS'), and keep the title short (additional information should belong to description).|   
 |**description**| Short description of the resource. (Lühiiseloomustus selgitusfailis.)|
-|**useContext**|Pick appropriate concept from the value set|
 |**purpose**|Longer description about the purpose and usage of the ValueSet. Selgitusfail - kasutuskoht|
 |**codingPrinciples**|For SNOMED CT based value sets "Numeric codes, 6-18 characters long, normally parsed as strings". For others, see Selgitusfail - Koodi numbrite ja tähtede kombinatsioon|
 |**changeManagementDescription**|Explain briefly the process of requesting updates. Uuendamissagedus selgitusfailis|

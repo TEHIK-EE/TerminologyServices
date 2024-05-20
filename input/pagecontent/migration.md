@@ -4,10 +4,13 @@ TEHIK terminology server aims to re-publish all the terminology assets that have
 ### General principles
 
 **CodeSystem vs ValueSet distinction**  
-Before FHIR, the distinction between code system and value set was much more fluid. While the situation has been clear for large international code systems like ICD-10 or SNOMED CT, the majority of our legacy controlled vocabulary has been published as independent code lists, resulting in re-using same codes (001, 002) with many different meanings across lists. In FHIR, this results in an uncomfortable situation, that all these locally coded lists must technically become FHIR CodeSystems and ValueSets both, and OID is the identifier of the value set. The following diagram describes this basic migration rule: 
+In our Publication Centre, there is often no distinction between code system and value set. While the situation has been clear for large international code systems like ICD-10 or SNOMED CT, the majority of our legacy controlled vocabulary has been published as independent code lists, resulting in re-using same codes (001, 002) with many different meanings across lists. In FHIR, this results in an uncomfortable situation, that all these locally coded lists must technically become FHIR CodeSystems and ValueSets both, and they share the OID. The following diagram describes this basic migration rule: 
 
 <img src="migration.png" alt="Migration rule" width="700"/>
 <br clear="all"/>
+
+We have cases where a ValueSet has changed its underlying CodeSystem (local codes switching to SNOMED CT), and the OID has remained the same. Therefore, we can conclude that until now, the OID has been assigned to the ValueSet rather than the CodeSystem. At the same time, this OID is used as an identifier for code system in CDA messaging.
+After many considerations, the OIDs have been migrated both to CodeSystem and ValueSet resource, resulting in two objects sharing the OID. This is a borderline case from the point of view of validity, and we would appreciate to know if this is causing any problems to our users. 
 
 **Hierarchy**  
 For expressing hierarchy in a code system, property _parent_ is preferred over concepts-in-concepts structure. While terminology server are expected to handle both approaches, using property _parent_ allows us to handle polyhierarchy and monohierarchy the same way. 
@@ -37,43 +40,6 @@ Lower priority activities:
 
 Creating concept maps between all the versions is a manual effort and will take a longer period. Please contact us about special needs of your project.
 
-### Version handling  
-
-An example ([Rhd kuuluvus](https://pub.e-tervis.ee/classifications/RhD%20kuuluvus))  
-
-**Version 1** - Local codes.
-- The latest version with locally defined codes is always migrated in order to provide mappings.  
-- CodeSystem and ValueSet for this code list are identical. 
-- OID identifier of this list is assigned to the ValueSet. A local legacy CodeSystem will not get an OID.
-
-|Code|Short name|Name|Long name|Parent|Hierarchy level|Valid from|Valid until|Last changed|Changer|Status|Comment| 
-|1|pos Rh|Rh positiivne|Rh positiivne||0|31.05.2007||||1||
-|2|neg Rh|Rh negatiivne|Rh negatiivne||0|31.05.2007||||1||
-{:.table-bordered .table-sm}
-
-**Version 2** - Local codes have been deprecated, SNOMED CT codes are in use.  
-- ValueSet's new version is created based on SNOMED CT Estonian version. 
-- OID for the value set remains the same as in version 1. 
-- ConceptMap is created between version 1 and version 2. (ConceptMaps may not be available with the first migration)
-
-|Code|Short name|Name|Long name|Parent|Hierarchy level|Valid from|Valid until|Last changed|Changer|Status|Comment| 
-|165747007|positiivne|RhD positiivne|RhD positive (finding)||0|28.03.2019|||Eesti Laborimeditsiini Ühing|1||
-|165746003|negatiivne|RhD negatiivne|RhD negative (finding)||0|28.03.2019|||Eesti Laborimeditsiini Ühing|1||
-|280416009|selguseta|selguseta|Indeterminate result (qualifier value)||0|28.03.2019|||Eesti Laborimeditsiini Ühing|1|Märgitakse, kui labor ei suuda RhD kuuluvust määrata|
-{:.table-bordered .table-sm}
-
-**Version 3** - SNOMED CT finding codes have been deprecated and replaced with qualifier value codes.  
-- ValueSet's new version is created from lines where status=1.
-- OID for the value set remains the same as in version 2.
-- ConceptMap is created between version 2 and version 3 active codes. (ConceptMaps may not be available with the first migration)  
-
-|Code|Short name|Name|Long name|Parent|Hierarchy level|Valid from|Valid until|Last changed|Changer|Status|Comment| 
-|165747007|positiivne|RhD positiivne|RhD positive (finding)||0|28.03.2019|||Eesti Laborimeditsiini Ühing|0||
-|165746003|negatiivne|RhD negatiivne|RhD negative (finding)||0|28.03.2019|||Eesti Laborimeditsiini Ühing|0||
-|10828004|positiivne|positiivne|Positive (qualifier value)||0|29.04.2020|||Eesti Laborimeditsiini Ühing|1||
-|260385009|negatiivne|negatiivne|Negative (qualifier value)||0|29.04.2020|||Eesti Laborimeditsiini Ühing|1||
-|280416009|selguseta|selguseta|Indeterminate result (qualifier value)||0|28.03.2019|||Eesti Laborimeditsiini Ühing|1|Märgitakse, kui labor ei suuda RhD kuuluvust määrata|
-{:.table-bordered .table-sm}
 
 ### Hierarchy in value sets  
 
@@ -101,15 +67,15 @@ Such situation where the value set subsumption differs from code system subsumpt
 The value set includes these properties as default properties for expansion.  
 
 
-### CodeSystem exceptions  
+### Larger CodeSystems  
 
 Large code systems do not follow the common rules of migration. Each of the following code systems is handled individually.
 
 **ICD-10 / RHK-10**  
 - ICD-10 international version is not published unless requested for a special purpose.
 - ICD-10 Estonian flavour is published as an independent CodeSystem.
-- Unlike current XML-structure, FHIR resource will express hierarchy in property _parent_ and does not use concepts-inside-concepts structure.
-- Descriptions in Estonian, English, and Latin, as well as all comments will be migrated.
+- Hierarchy in CodeSystem is represented as nested concepts as well as property "parent". In ValueSet, hierarchy is represented with property "parent" and the hierarchy is flattened.
+- Descriptions in Estonian, English, and Latin, as well as all comments are migrated.
 
 **SNOMED CT**  
 - Default SNOMED CT version in terminology server is the latest Estonian edition.
@@ -121,10 +87,10 @@ Large code systems do not follow the common rules of migration. Each of the foll
 - LOINC is not migrated to terminology server in the first phase. 
 
 **NOMESCO Surgical Procedures (NCSP)**  
-- Will be migrated according to general principles. 
-- The latest version with restored hierarchy and Estonian and English descriptions will be used for migration.
+- Migrated according to general principles. Available as CodeSystem and ValueSet.  
+- Estonian and English descriptions, hierarchy provided.
 
 **ATC and other medication related terminologies**  
-- ATC will not be migrated in the first phase. While it is possible to make ATC available, the automatic updating from the source system will need to be put in place before being able to provide up-to-date service.
-- In later stage, Estonian version of ATC will be published with the mapping to international ATC (Estonian version contains local codes for extra granularity).
-- It is planned to update medication vocabularies directly and automatically from Ravimiamet's (State Agency of Medicines) sources.
+- ATC will not be migrated in the first phase. While it is possible to make ATC available, the automatic updating from the source system (Ravimiregister) will need to be put in place before being able to provide up-to-date service.
+- In later stage, Estonian version of ATC and other Ravimiamet's terminologies will be published with the mapping to international code systems for facilitating crossborder services.
+
