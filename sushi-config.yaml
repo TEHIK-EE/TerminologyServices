@@ -7,9 +7,9 @@
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 
-id: terminology-services
+id: ee.fhir.ts
+#canonical: https://tehik.ee/fhir/ts
 canonical: https://fhir.ee
-url: https://fhir.ee/ImplementationGuide/terminology-services
 name: terminology-services
 title: "Estonian Terminology Services Implementation Guide"
 description: Implementation and usage guidance for using Estonian national FHIR terminology server maintained by TEHIK
