@@ -10,6 +10,7 @@ Usage: #example
 * name = "AbivahendidJaMeditsiiniseadmedSupplement"
 
 * extension[0].url = $otherNameLocalized 
+//* extension[0].url = "http://hl7.org/fhir/StructureDefinition/codesystem-otherName"
 * extension[0].extension[0].url = "name"
 * extension[0].extension[=].valueString = "Aids and medical devices"
 * extension[0].extension[+].url = "lang"

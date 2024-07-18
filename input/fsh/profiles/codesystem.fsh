@@ -23,7 +23,6 @@ Description: "Profile for the basic code system in TEHIK terminology server. The
 * extension[codingPrinciples] 
   * ^short = "Description of coding principles: structure of codes, hierarchy, etc."
 
-//* extension contains CSOtherName named otherTitle 0..*
 * extension[otherTitle] 
   * ^short = "Other human-readable title for the code system"
 
