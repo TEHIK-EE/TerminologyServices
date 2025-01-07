@@ -3,7 +3,7 @@ Estonian Terminology Services Implementation Guide
 This is an IG for Estonian national FHIR terminology services provided by TEHIK.
 The IG contains information about terminology metadata management, querying terminology server, and basic terminology authoring. 
 
-<br> </br>
+<br>  </br>
 ###
 ### Publication
 This ImplementationGuide is published in the following locations:
