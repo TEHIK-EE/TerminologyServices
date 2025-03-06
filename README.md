@@ -8,7 +8,7 @@ The IG contains information about terminology metadata management, querying term
 ### Publication
 This ImplementationGuide is published in the following locations:
 
-Continuous Build: __http://build.fhir.org/ig/TEHIK-EE/TerminologyServices/branches/master/index.html__  
+Continuous Build: __http://build.fhir.org/ig/TEHIK-EE/TerminologyServices__  
 Canonical / permanent URL: 
 <br> </br>
 
