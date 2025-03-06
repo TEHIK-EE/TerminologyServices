@@ -14,7 +14,7 @@ Põhjalikum eestikeelne juhend on leitav [TEHIKu Teabekeskusest](https://teabeke
   <td>
 <p>Central terminology services use FHIR standard, but the services themselves are not restricted to FHIR implementers. Terminology server replaces the old CSV-based publication portal, and is used by the whole eHealth community in Estonia.</p>
 <hr>
-<p>Implementation Guide contains:</p>
+<p>The guide contains:</p>
 <ul>
   <li>Basic overview of FHIR terminology, including references to base specifications and training materials</li>
   <li>Introduction to Ontoserver</li>
