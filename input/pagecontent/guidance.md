@@ -1,10 +1,13 @@
 
 ### FHIR Resources | FHIR ressursid
 
+**Eestikeelne lisainfo, videoloengud ja näidispäringud leiad [TEHIKu Teabekeskusest](https://teabekeskus.tehik.ee/et/teenused/teabekeskuse-teenused/terminoloogiaserver/fhir-terminoloogia-tutvustus).**
+
+
 #### CodeSystem
 
-CodeSystems carry information about concepts. Well known big code systems are SNOMED CT, LOINC, ATC, ICD-10, etc. 
-But FHIR CodeSystem is not defined by its size. For example, [HL7 Administrative Gender](http://hl7.org/fhir/administrative-gender) has only 4 concepts. 
+CodeSystems carry information about concepts. Well known big code systems are SNOMED CT, LOINC, ATC, ICD-10 (RHK-10), etc. 
+However, CodeSystems don't have to be big, for example, [HL7 Administrative Gender](http://hl7.org/fhir/administrative-gender) has only 4 concepts. 
 
 Read more about [CodeSystem resource](https://hl7.org/fhir/codesystem.html).
 
@@ -18,7 +21,7 @@ CodeSystem supplement does not have its own dedicated resource type. FHIR CodeSy
 #### ValueSet 
 
 ValueSet resource takes its content from CodeSystem(s). There can never be a FHIR ValueSet that defines its own codes without referencing a CodeSystem. Therefore, we often see pairs of CodeSystem and ValueSet, where ValueSet simply includes all concepts from the CodeSystem.
-A ValueSet can include concepts from two or more different CodeSystems. And also, every CodeSystem has a default URI that represents a ValueSets that contains the whole CodeSystem.
+A ValueSet can include concepts from two or more different CodeSystems. And also, every CodeSystem has a default URI that represents a ValueSet that contains the whole CodeSystem.
 
 <img src="codesystem-valueset-relationship.png" alt="ValueSets are made of CodeSystem concepts" width="800"/>
 <br clear="all"/>
@@ -30,8 +33,8 @@ Read more about [ValueSet resource](https://hl7.org/fhir/valueset.html)
 
 #### ConceptMap
 
-ConceptMap resource shows mapping between two ValueSets, and it is by its definition use-case-specific. 
-In some cases, mapping might be done from one CodeSystem to another, but technically it is still defined between two ValueSets that represent the content of the CodeSystem. 
+ConceptMap resource shows mapping between two ValueSets, and it often use-case-specific. 
+In some cases, mapping might be done from one CodeSystem to another. 
 
 <img src="conceptmap-directed.png" alt="ConceptMap is directed" width="800"/>
 <br clear="all"/>
@@ -53,7 +56,7 @@ In the first phase, NamingSystems are not in use in TEHIK terminology server.
 
 ### Example queries | Näidispäringud
 
-* [TEHIK terminology server example queries](https://github.com/TEHIK-EE/TerminologyServices/tree/master/input/images/tehik-ts-postman-collection.json)  
+* [TEHIK terminology server example queries](https://teabekeskus.tehik.ee/et/teenused/teabekeskuse-teenused/terminoloogiaserver/fhir-terminoloogia-tutvustus)  
 
-* [Ontoserver Postman collection](https://www.postman.com/jimsteel/workspace/ontoserver/collection/784165-fb95a213-ff25-4253-8b02-9368f2e59cc9) by CSIRO  
+* [Ontoserver Postman collection](https://www.postman.com/jimsteel/ontoserver/collection/k4gv6q6/ontoserver-6-example-fhir-terminology-requests) by CSIRO  
 

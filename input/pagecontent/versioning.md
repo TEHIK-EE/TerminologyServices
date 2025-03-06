@@ -1,6 +1,6 @@
 ### Every object is its version
 
-In FHIR, there is no main object for a ValueSet or CodeSystem. Every FHIR resource is a version as such. The main/parent object of these versions is an abstract object that does not exist in the server.  
+In FHIR, there is no main object for a ValueSet or a CodeSystem. Every FHIR resource is a version as such. The main/parent object of these versions is an abstract object that does not exist in the server.  
 
 <img src="versioning1.JPG" alt="Every resource is its version"/>
 <br clear="all"/>
@@ -15,14 +15,12 @@ All resources that are primarily published in TEHIK FHIR terminology server, use
 
 OIDs are typically not used in FHIR, and the main identifier for a code system or a value set is in the **url** element. 
 
-However, the same value sets and code systems are also used in CDA and V3, so all migrated terminology resources carry OID in the **identifier** element. 
-
-Version OIDs are also provided in the same **identifier** element with **type** version.
+However, the same value sets and code systems are also used in CDA and V3, so all migrated terminology resources carry OID in the **identifier** element. Version OIDs are also provided in the same **identifier** element with **type** version.
 
 <img src="oid-url.JPG" alt="Relationship between OID and URL"/>
 <br clear="all"/> 
 
-The old way of publishing did not  distinguish code systems from value sets, and for that reason the OIDs are added to the CodeSystem resource as well as related ValueSet resource. This is done in order to simplify the transition from old system to new. However, this approach is not logically correct, because two different objects should not carry the same OID. Please contact us if this causes any issues in your FHIR tooling.
+The old way of publishing did not distinguish code systems from value sets, and for that reason the OIDs are added to the CodeSystem resource as well as related ValueSet resource. This is done in order to simplify the transition from old system to new. However, this approach is not logically correct, because two different objects should not carry the same OID. Please contact us if this causes any issues in your FHIR tooling.
 
 In FHIR terminology resources, business version is provided in the **version** element.
 Also, there is an element **versionId** that is inherited from **Resource.Meta** data type, and this carries a server side version of the specific resource. This element should be ignored in most cases.
@@ -41,6 +39,7 @@ Every change will trigger a new version in FHIR, but only major new version trig
 * **2.1.0** corresponds to OID.**2**
 * **3.0.0** corresponds to OID.**3**
 
+
 ### Types of change 
 
 All changes trigger a new version number in FHIR. Semantic version number roughly communicates the type of the change and its impact to validation and usability. 
@@ -52,6 +51,7 @@ All changes trigger a new version number in FHIR. Semantic version number roughl
 |**Third**|Minor change|Update is optional, often unnecessery.|1.0.0 -> 1.0.1.Changing descriptive metadata: publisher's contact details, references to guidance materials, etc. No changes in content.|
 
 Only the first digit change (major change) triggers issuing a new version OID.
+When a new sub-version is created, the effectivePeriod.start of the resource will remain the same as it was for the main version. The reason for this is, that in many cases, subversions are technical corrections, and the previous version may not have been even theoretically usable. In order to not leave gaps in the effectivePeriod chain, the new subversion is effective already before its creation date. The old subversion will be marked with the effectivePeriod.end date and "retired" status.
 
 ### Exceptions  
 

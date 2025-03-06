@@ -1,26 +1,4 @@
-### General information about terminologies
-
-#### Maintaining terminologies
-  
-Principles of controlled vocabularies:
-- concept orientation (concept code is assigned to the meaning of a concept, not a lexical expression);
-- non-redundancy (one concept should only have one code); 
-- non-ambiguity (one code should only be used for one concept);
-- internal continuity.
-
-In the process of maintaining a controlled vocabulary, the following principles are advised:
-- alphanumeric meaningless codes, not strictly restricted in length;
-- codes should never be reused, the meaning of coded concept should never change;
-- versioning of terminology;
-- metadata for authoring (incl updating and deletions);
-- mapping between old and new concepts;
-- multilingual support;
-- flexibility that support changes in the terminology.
-
-More reading on theory:
-- Benson, Tim; Grieve, Grahame 2021. Principles of Health Terminology. FHIR, HL7 and SNOMED CT. Fourth Edition. Springer Nature Switzerland AG.
-- Cimino, J.J. 1998. Desiderata for controlled Medical Vocabularies in the Twenty-First Century. Methods Inf med. 1998; 37: 394-403. 
-- Elkin, Peter L. (ed) 2012. Terminology and Terminological Systems. Springer.
+### General information about terminology management
 
 #### Types of terminologies
 
@@ -36,7 +14,7 @@ There are many types of controlled vocabularies, and the distinction is not alwa
  370135005 _Pathological process (attribute)_ = 441862004 _Infectious process (qualifier value)_,  
  246075003 _Causative agent (attribute)_ = _49872002 Virus (organism)_  
 
-**Classification** (et _klassifikaator_) is finite list of concepts, designed to suit best for statistical use case, but often used also for clinical documentation. Classification is built on the closed world assumption, and even though they are updated like any other terminology asset, they aim to stay as stable as possible, and are therefore less flexible by design. Classifications inevitably contain so-called residue categories, because all concepts must fall under a category. The best known classifications in healthcare are the ones maintained by WHO: ICD-10 (et RHK-10), ICF (et RFK), ATC. For ICD-11 (et RHK-11), it is important to know, that while mortality and morbidity causes continue to be a classification, the foundation layer is planned to be closer to a nomenclature by nature.
+**Classification** (et _klassifikaator_ or _klassifikatsioon_) is a finite list of concepts, designed to suit best for statistical use case, but often used also for clinical documentation. Classification is built on the closed world assumption, and even though they are updated like any other terminology asset, they aim to stay as stable as possible, and are therefore less flexible by design. Classifications inevitably contain so-called residue categories, because all concepts must fall under a category. The best known classifications in healthcare are the ones maintained by WHO: ICD-10 (et RHK-10), ICF (et RFK), ATC. For ICD-11 (et RHK-11), it is important to know, that while mortality and morbidity causes continue to be a classification, the foundation layer is planned to be closer to a nomenclature by nature.
 
 #### Hierarchy
 
@@ -62,3 +40,7 @@ While we're working on the process diagrams and new workflows, feel free to ask 
 All [SNOMED CT](https://browser.ihtsdotools.org/?) related questions are always welcome at snomed@tehik.ee  
 If you need linguistic help with Estonian clinical terminology, try using the [health dictionary](https://tervisesonastik.tai.ee/) by Health Development Institute (TAI), or send them your question at medterm@tai.ee  
 
+**More reading on theory:**
+- Benson, Tim; Grieve, Grahame 2021. Principles of Health Terminology. FHIR, HL7 and SNOMED CT. Fourth Edition. Springer Nature Switzerland AG.
+- Cimino, J.J. 1998. Desiderata for controlled Medical Vocabularies in the Twenty-First Century. Methods Inf med. 1998; 37: 394-403. 
+- Elkin, Peter L. (ed) 2012. Terminology and Terminological Systems. Springer.
