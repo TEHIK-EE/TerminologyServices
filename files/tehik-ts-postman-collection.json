@@ -1,0 +1,905 @@
+{
+	"info": {
+		"_postman_id": "9c231b6a-cdad-49d3-a5f4-b193d0623b1c",
+		"name": "TEHIK terminology server",
+		"description": "The collection contains a set of frequently used searches and operations in TEHIK FHIR terminology server.\n\nThe queries are designed to work in TEHIK's production terminology server with the endpoint [https://term.tehik.ee/fhir](https://term.tehik.ee/fhir)\n\nTEHIK test server [https://term.test.tehik.ee/fhir](https://term.test.tehik.ee/fhir) may require the user to occasionally tweak the queries to match the existing resources in the test server.\n\nPlease note that not all search and operation input parameters described in HL7 FHIR documentation are supported by Ontoserver. For additional information, consult with Ontoserver FHIR R5 API documentation at [https://ontoserver.csiro.au/docs/7](https://ontoserver.csiro.au/docs/7)\n\nFor clarifications, feel free to contact us by email [andmekorraldus@tehik.ee](https://mailto:andmekorraldus@tehik.ee) or in [FHIR Zulip chat](https://chat.fhir.org/#narrow/channel/389311-Estonian-FHIR-community).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2795003"
+	},
+	"item": [
+		{
+			"name": "CodeSystems - get all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/CodeSystem",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"CodeSystem"
+					]
+				},
+				"description": "This query is for retrieving the overall number and short summary of all the CodeSystems and their versions currently available in the terminology server. The searchset Bundle provides basic metadata (like canonical URL, fullURL, OID, title, version, status, etc) for CodeSystems.\n\nThe same query logic applies to other types of FHIR resources: ValueSet, ConceptMap, but also clinical or administrative resources.\n\nIn many cases terminology metada query may be preferred instead: {{url}}/metadata?mode=terminology"
+			},
+			"response": []
+		},
+		{
+			"name": "CodeSystem by id",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/CodeSystem/mtk-haava-korrastus--1.0.0",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"CodeSystem",
+						"mtk-haava-korrastus--1.0.0"
+					]
+				},
+				"description": "CodeSystem id used in the query is the id of this resource in this server instance. It is not a business identifier of the resource or the code system. The query corresponds to the CodeSystem's fullURL value provided in searchset Bundles.\n\nTEHIK assigns the id in the authoring tool, which makes it human-readable: unique part of the code system URL, two dashes, version number of the code system.\n\nWhen a resource with **the same id** is updated, only the latest instance remains available by default. Earlier versions of the same resource are only available through history.\n\n**Every business version of the code system is assigned a new id** (hence, the version number being part of the id), so all business versions of a code system are always equally available in the server.\n\nFor querying by the identifier (canonical URL or OID), other queries are used."
+			},
+			"response": []
+		},
+		{
+			"name": "CodeSystem by id - RHK10 (ICD10 Estonia)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/CodeSystem/rhk10--9.1.0",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"CodeSystem",
+						"rhk10--9.1.0"
+					]
+				},
+				"description": "This query retrieves RHK-10 (ICD-10) code system with a version 9.1.0 (please note that this may not be the newest version of the system at the time of reading).\n\nThe response provides full code system with all designations and properties available in the code system."
+			},
+			"response": []
+		},
+		{
+			"name": "CodeSystem by title",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/fhir+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/CodeSystem/?title=kiirabi",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"CodeSystem",
+						""
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "kiirabi"
+						}
+					]
+				},
+				"description": "This query retrieves all CodeSystems with the beginning of the title matching the key word given as a parameter. The input parameter is case-insensitive. Search can be enhanced with an additional modifier - see \"CodeSystem by title (with modifiers)\".\n\nThe summary mode has been turned on by default, so not all details of the resources are included in the response.\n\nThe same query logic applies to ValueSets and ConceptMaps."
+			},
+			"response": []
+		},
+		{
+			"name": "CodeSystem by title (with modifiers)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/CodeSystem/?title:contains=iirabi",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"CodeSystem",
+						""
+					],
+					"query": [
+						{
+							"key": "title:contains",
+							"value": "iirabi"
+						}
+					]
+				},
+				"description": "Text-based search parameters like title, name _id, description and publisher support modifiers to further detail the query.\n\nSupported modifiers in Ontoserver are :exact, :contains and :missing."
+			},
+			"response": []
+		},
+		{
+			"name": "CodeSystem by name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/CodeSystem?name=MTK",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"CodeSystem"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "MTK"
+						}
+					]
+				},
+				"description": "The query retrieves all CodeSystem resources with .name element starting with the string provided in the parameters.\n\nThe query is similar to \"CodeSystem by title\": title element being the human-readable title for the terminology resource and name element being the machine-friendly alteration of it.\n\nModifiers can be used - see \"CodeSystem by title (with modifiers)\"."
+			},
+			"response": []
+		},
+		{
+			"name": "CodeSystem by URL (FHIR canonical)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/fhir+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/CodeSystem/?url=https://fhir.ee/CodeSystem/tervisekassa-teenuste-loetelu",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"CodeSystem",
+						""
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "https://fhir.ee/CodeSystem/tervisekassa-teenuste-loetelu"
+						}
+					]
+				},
+				"description": "This query retrieves all CodeSystem resources (versions) of a specific CodeSystem using the canonical URL as the parameter.\n\nCanonical URL is considered the main identifier of a FHIR CodeSystem, ValueSet or ConceptMap. It is a fixed URL and together with a version number, should resolve as a unique entry in the server. Without specifying the version number, all versions are returned.\n\nThe response is always a searchset Bundle, even when only one match is found."
+			},
+			"response": []
+		},
+		{
+			"name": "CodeSystem by URL + version",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/fhir+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/CodeSystem/?url=https://fhir.ee/CodeSystem/tervisekassa-teenuste-loetelu&version=54.0.0",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"CodeSystem",
+						""
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "https://fhir.ee/CodeSystem/tervisekassa-teenuste-loetelu"
+						},
+						{
+							"key": "version",
+							"value": "54.0.0"
+						}
+					]
+				},
+				"description": "This query retrieves CodeSystem resources that match the canonical URL and version provided as parameters.\n\nURL is the main identifier for a FHIR terminology resource, and therefore, together with the version number, it should correspond to exactly one resource in the server.\n\nThe response is always a searchset Bundle, even when only one match is found."
+			},
+			"response": []
+		},
+		{
+			"name": "CodeSystem by OID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/CodeSystem/?identifier=urn:oid:1.3.6.1.4.1.28284.6.2.1.292",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"CodeSystem",
+						""
+					],
+					"query": [
+						{
+							"key": "identifier",
+							"value": "urn:oid:1.3.6.1.4.1.28284.6.2.1.292"
+						}
+					]
+				},
+				"description": "The query retrieves all CodeSystem resources with a certain OID documented under .identifier element. OID is provided in the parameters with a prefix \"urn:oid:\".\n\nNote, that OID under identifier element is not the primary identifier for a terminology resource, so there can be no expectation for the OID to always be present.\n\nIn TEHIK's implementation, OID may be the same for the CodeSystem and related ValueSet resource when the ValueSet includes all concepts from the CodeSystem. This solution does not follow HL7 standard, and is used solely for technical/historical reasons (old terminology publication system did not differentiate between code systems and value sets, and many existing systems still rely on OIDs)."
+			},
+			"response": []
+		},
+		{
+			"name": "CodeSystem by OID (version OID)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/CodeSystem/?identifier=urn:oid:1.3.6.1.4.1.28284.6.2.1.292.6",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"CodeSystem",
+						""
+					],
+					"query": [
+						{
+							"key": "identifier",
+							"value": "urn:oid:1.3.6.1.4.1.28284.6.2.1.292.6"
+						}
+					]
+				},
+				"description": "The query retrieves all CodeSystem resources with the given OID under identifier - the query itself is identical to the \"CodeSystem by OID\" query, but this time, the OID parameter includes a \"version OID\".\n\nVersion OID is another legacy concept from the old publication platform and is migrated for technical reasons. When possible, relying on version OIDs should be avoided.\n\nPlease note, that with the versioning algorithm changing from integer to semver, one version OID may correspond to several FHIR versions. For example, OID.6 version corresponds to FHIR resource versions 6.0.0, 6.1.0, etc."
+			},
+			"response": []
+		},
+		{
+			"name": "CodeSystem supplement (additional properties)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/CodeSystem/abivahendid-ja-meditsiiniseadmed--4.0.0",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"CodeSystem",
+						"abivahendid-ja-meditsiiniseadmed--4.0.0"
+					]
+				},
+				"description": "The query retrieves a CodeSystem resource of a type \"supplement\" by its id.\n\nThis supplement has been created in order to serve the value set with the same name and provide an additional property \"groupedBy\".\n\nFrom user's point of view \"groupedBy\" provides the hierarchy of concepts within the ValueSet. However, it is important to note, that the hierarchy of these concepts in the original CodeSystem is provided by \"parent\" property in SNOMED CT.\n\nCodeSystem supplement cannot be target of $validate operation."
+			},
+			"response": []
+		},
+		{
+			"name": "CodeSystem supplement (translations)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/CodeSystem/konfidentsiaalsus-arstile--1.0.0",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"CodeSystem",
+						"konfidentsiaalsus-arstile--1.0.0"
+					]
+				},
+				"description": "The query retrieves a CodeSystem resource of a type \"supplement\" by its id.\n\nThis supplement has been created in order to provide Estonian translations to a code system which is not authored by TEHIK (original publisher is HL7).\n\nThe designations added in this supplement, can be used in a ValueSet resource when valueset-supplement extension references the URL of this CodeSystem supplement.\n\nCodeSystem supplement cannot be target of $validate operation, and display names provided in the supplement may not pass validation (this differs across validators/servers).\n\nIn future FHIR releases, it is expected that the author of a supplement can define the translations supplement as global scope (automatically regarded as part of CodeSystem) or local scope (must be referenced from ValueSet), and the validation of supplement-translations should become more organic."
+			},
+			"response": []
+		},
+		{
+			"name": "ValueSets - get all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/ValueSet",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ValueSet"
+					]
+				},
+				"description": "This query is for retrieving the overall number and short summary of all the ValueSets and their versions currently available in the terminology server. The searchset Bundle provides basic metadata (like canonical URL, fullURL, OID, title, version, status, etc) for ValueSets."
+			},
+			"response": []
+		},
+		{
+			"name": "ValueSet definition by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/fhir+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/ValueSet/anesteesia-liigid--1.0.0",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ValueSet",
+						"anesteesia-liigid--1.0.0"
+					]
+				},
+				"description": "The query retrieves a ValueSet by it's id. Additional information regarding id and versioning can be seen under \"Codesystem by id\".\n\nPlease note that this query only returns the metadata and definition of the ValueSet, and the actual content of ValueSet is not present. In order to resolve the ValueSet composition rules (in .compose element) and get the full content of the ValueSet, use the $expand operation.\n\nAlso note that the .compose element also includes information about which properties from the CodeSystem to include in the default expansion of the ValueSet."
+			},
+			"response": []
+		},
+		{
+			"name": "ValueSet expansion (default)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/fhir+json"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "et",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/ValueSet/anesteesia-liigid--1.0.0/$expand",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ValueSet",
+						"anesteesia-liigid--1.0.0",
+						"$expand"
+					]
+				},
+				"description": "This operations resolves the ValueSet composition rules into a full expansion of the ValueSet: all concepts that currently belong to the ValueSet are listed in the expansion element.\n\nIn this case, ValueSet definition also indicated that property 'parent' should be included in the default expansion for each concept.\n\nCodeSystem may have more designations or more properties. Those can be added to the expansion using parameters like includeDesignations=true or property=\\[code of property\\].\n\nUse acceptLanguage header to control the language of the displays in the expansion. Please note that acceptLanguage header does not affect the language of the metadata (title, description)."
+			},
+			"response": []
+		},
+		{
+			"name": "ValueSet expansion (include additional property)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/fhir+json"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "et",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/ValueSet/abo-veregrupp--4.0.0/$expand?property=parent",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ValueSet",
+						"abo-veregrupp--4.0.0",
+						"$expand"
+					],
+					"query": [
+						{
+							"key": "property",
+							"value": "parent"
+						}
+					]
+				},
+				"description": "This operation expands the ValueSet by id, including an additional property provided as a parameter.\n\nIn this case, ValueSet definition does not include property \"parent\" in the default expansion, as it would provide little value in this context. However, any system can request this additional information from the source CodeSystem (SNOMED CT in this case)."
+			},
+			"response": []
+		},
+		{
+			"name": "ValueSet by URL (FHIR canonical)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/fhir+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/ValueSet/?url=https://fhir.ee/ValueSet/anesteesia-liigid",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ValueSet",
+						""
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "https://fhir.ee/ValueSet/anesteesia-liigid"
+						}
+					]
+				},
+				"description": "See description under \"CodeSystem by URL\""
+			},
+			"response": []
+		},
+		{
+			"name": "ValueSet by OID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/ValueSet/?identifier=urn:oid:1.3.6.1.4.1.28284.6.2.1.169",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ValueSet",
+						""
+					],
+					"query": [
+						{
+							"key": "identifier",
+							"value": "urn:oid:1.3.6.1.4.1.28284.6.2.1.169"
+						}
+					]
+				},
+				"description": "Please see description under \"CodeSystem by OID\" and \"CodeSystem by OID (version OID)\"."
+			},
+			"response": []
+		},
+		{
+			"name": "ValueSet by name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/fhir+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/ValueSet?name=MTK",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ValueSet"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "MTK"
+						}
+					]
+				},
+				"description": "Please see descriptions under \"CodeSystem by name\" and \"CodeSystem by title\"."
+			},
+			"response": []
+		},
+		{
+			"name": "ValueSet changes since date",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/fhir+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/ValueSet/?_lastUpdated=ge2025-06-01",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ValueSet",
+						""
+					],
+					"query": [
+						{
+							"key": "_lastUpdated",
+							"value": "ge2025-06-01"
+						}
+					]
+				},
+				"description": "This query returns all ValueSets that are known by the server to have changed since the specified date in the parameters.\n\nPlease note that this query relies on the server-side timestamp of writing or overwriting the resource. It may give false-positives as the server may have resources reloaded for technical reasons, and in this case, actual changes in the content have not taken place.\n\nThe best indicator for actual changes is the .date element which shows the time of authoring this version of the resource - unfortunately this element is not currently exposed as a search parameter.\n\nThe authoring rule is, that content changes always result in the change of the version number, and therefore, a resource with new id is created. The only time an existing resource is overwritten, is when the resource is marked retired and effectivePeriod.end date is added.\n\n[https://hl7.org/fhir/search.html#_lastUpdated](https://hl7.org/fhir/search.html#_lastUpdated)"
+			},
+			"response": []
+		},
+		{
+			"name": "Lookup code in RHK10 (ICD10-EE)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/CodeSystem/$lookup?system=https://fhir.ee/CodeSystem/rhk10&code=M89.0",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"CodeSystem",
+						"$lookup"
+					],
+					"query": [
+						{
+							"key": "system",
+							"value": "https://fhir.ee/CodeSystem/rhk10"
+						},
+						{
+							"key": "code",
+							"value": "M89.0"
+						}
+					]
+				},
+				"description": "Look up detailed information about the concept in the CodeSystem. Concept code, CodeSystem url and optionally a version should be specified.\n\nWhen version is not specified, the latest active CodeSystem version is used for resolving the query.\n\n[https://hl7.org/fhir/codesystem-operation-lookup.html](https://hl7.org/fhir/codesystem-operation-lookup.html)"
+			},
+			"response": []
+		},
+		{
+			"name": "Lookup code in SNOMED CT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/CodeSystem/$lookup?system=http://snomed.info/sct&code=225921005",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"CodeSystem",
+						"$lookup"
+					],
+					"query": [
+						{
+							"key": "system",
+							"value": "http://snomed.info/sct"
+						},
+						{
+							"key": "code",
+							"value": "225921005"
+						}
+					]
+				},
+				"description": "Look up detailed information about the concept in the CodeSystem. Concept code, CodeSystem url and optionally a version should be specified.\n\nWhen version is not specified, terminology server uses the default version of the CodeSystem for resolving the query - in TEHIK's terminology server, the default version of SNOMED CT is the current Estonian edition.\n\n[https://hl7.org/fhir/codesystem-operation-lookup.html](https://hl7.org/fhir/codesystem-operation-lookup.html)"
+			},
+			"response": []
+		},
+		{
+			"name": "Subsumption with SNOMED CT codes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/CodeSystem/$subsumes?system=http://snomed.info/sct&codeA=107963000&codeB=63816008",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"CodeSystem",
+						"$subsumes"
+					],
+					"query": [
+						{
+							"key": "system",
+							"value": "http://snomed.info/sct"
+						},
+						{
+							"key": "codeA",
+							"value": "107963000"
+						},
+						{
+							"key": "codeB",
+							"value": "63816008"
+						}
+					]
+				},
+				"description": "This operation checks the relationship between codeA and codeB. The outcome for hierarchically related concepts is either  \n\\- codeA **subsumes** codeB (meaning that codeA is higher in the tree), or  \n\\- codeA is **subsumed-by** codeB (meaning that codeB is higher in the tree).\n\nSubsumption check relies on the full hierarchy tree, not just the closest parent-child relationships. When codeA and codeB are not hierarchically related, the operation outcome is **not-subsumed**.\n\n[https://www.hl7.org/fhir/codesystem-operation-subsumes.html](https://www.hl7.org/fhir/codesystem-operation-subsumes.html)"
+			},
+			"response": []
+		},
+		{
+			"name": "Validate code+display in ValueSet",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/ValueSet/$validate-code?code=V&system=http://terminology.hl7.org/CodeSystem/v3-Confidentiality&display=suletud&url=https://fhir.ee/ValueSet/konfidentsiaalsus-arstile",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ValueSet",
+						"$validate-code"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "V"
+						},
+						{
+							"key": "system",
+							"value": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
+						},
+						{
+							"key": "display",
+							"value": "suletud"
+						},
+						{
+							"key": "url",
+							"value": "https://fhir.ee/ValueSet/konfidentsiaalsus-arstile"
+						}
+					]
+				},
+				"description": "This operation validates whether a code+display pair is included in the specified ValueSet.\n\nPlease note that the example here uses displays that are only available in the CodeSystem supplement - therefore, validation recognises the Estonian display from the ValueSet (and responds with \"true\") but it would not currently recognise the display when validating against the original HL7 CodeSystem."
+			},
+			"response": []
+		},
+		{
+			"name": "Validate code+display in CodeSystem",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/CodeSystem/$validate-code?code=V&display=valenimi&url=http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"CodeSystem",
+						"$validate-code"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "V"
+						},
+						{
+							"key": "display",
+							"value": "valenimi"
+						},
+						{
+							"key": "url",
+							"value": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
+						}
+					]
+				},
+				"description": "This operation validates whether a code+display pair is included in the specified CodeSystem.\n\nThe query returns \"false\" because the display name in the parameters is not correct in the CodeSystem."
+			},
+			"response": []
+		},
+		{
+			"name": "ConceptMaps - get all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/ConceptMap",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ConceptMap"
+					]
+				},
+				"description": "This query is for retrieving the overall number and short summary of all the ConceptMaps and their versions currently available in the terminology server. The searchset Bundle provides basic metadata (like canonical URL, fullURL, title, version, status, source and target scope, etc) for ConceptMaps."
+			},
+			"response": []
+		},
+		{
+			"name": "ConceptMap by source concept",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/ConceptMap/?source-code=4&source-group-system=https://fhir.ee/CodeSystem/patsiendi-kontaktisikute-liigid",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ConceptMap",
+						""
+					],
+					"query": [
+						{
+							"key": "source-code",
+							"value": "4"
+						},
+						{
+							"key": "source-group-system",
+							"value": "https://fhir.ee/CodeSystem/patsiendi-kontaktisikute-liigid"
+						}
+					]
+				},
+				"description": "The query retrieves all ConceptMaps where a mapping has been provided for the code+system.\n\nPlease note the slight differences in parameter names between FHIR R4 and R5, search parameters vs operation input parameters, etc."
+			},
+			"response": []
+		},
+		{
+			"name": "ConceptMap by source scope",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/ConceptMap/?source-scope-uri=https://fhir.ee/ValueSet/patsiendi-kontaktisikute-liigid",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ConceptMap",
+						""
+					],
+					"query": [
+						{
+							"key": "source-scope-uri",
+							"value": "https://fhir.ee/ValueSet/patsiendi-kontaktisikute-liigid"
+						}
+					]
+				},
+				"description": "The query retrieves all ConceptMaps that have the given ValueSet provided as the scope of mappings."
+			},
+			"response": []
+		},
+		{
+			"name": "Translate concept",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/ConceptMap/$translate?url=https://fhir.ee/ConceptMap/patsiendi-kontaktisikute-liigid-v3-v4-vastendus&system=https://fhir.ee/CodeSystem/patsiendi-kontaktisikute-liigid&sourceCode=4&targetSystem=http://snomed.info/sct",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ConceptMap",
+						"$translate"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "https://fhir.ee/ConceptMap/patsiendi-kontaktisikute-liigid-v3-v4-vastendus"
+						},
+						{
+							"key": "system",
+							"value": "https://fhir.ee/CodeSystem/patsiendi-kontaktisikute-liigid"
+						},
+						{
+							"key": "sourceCode",
+							"value": "4"
+						},
+						{
+							"key": "targetSystem",
+							"value": "http://snomed.info/sct"
+						}
+					]
+				},
+				"description": "This operation uses a ConceptMap to translate a code from one CodeSystem to another.\n\nThe ConceptMap used here is created between two versions of the same ValueSet (ValueSet has switched from local codes to SNOMED CT). ValueSet provides the scope of the ConceptMap, and system+sourceCode and targetSystem parameters specify the expected translation direction.\n\nPlease note that the parameter names have changed between FHIR R4 and R5.\n\n[https://hl7.org/fhir/conceptmap-operation-translate.html](https://hl7.org/fhir/conceptmap-operation-translate.html)"
+			},
+			"response": []
+		},
+		{
+			"name": "Terminology capabilities",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/metadata?mode=terminology",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"metadata"
+					],
+					"query": [
+						{
+							"key": "mode",
+							"value": "terminology"
+						}
+					]
+				},
+				"description": "Query for listing all the CodeSystems available in the terminology server. For each CodeSystem, the default version and basic metadata is provided."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

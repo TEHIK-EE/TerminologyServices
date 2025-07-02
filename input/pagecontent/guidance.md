@@ -56,7 +56,9 @@ In the first phase, NamingSystems are not in use in TEHIK terminology server.
 
 ### Example queries | Näidispäringud
 
-* [TEHIK terminology server example queries](https://teabekeskus.tehik.ee/et/teenused/teabekeskuse-teenused/terminoloogiaserver/fhir-terminoloogia-tutvustus)  
+* [TEHIK FHIR terminology introduction: videos, slides, starting queries](https://teabekeskus.tehik.ee/et/teenused/teabekeskuse-teenused/terminoloogiaserver/fhir-terminoloogia-tutvustus)(in Estonian)  
+
+* [TEHIK Postman collection](https://github.com/TEHIK-EE/TerminologyServices/blob/master/files/tehik-ts-postman-collection.json)(Documentation in English)
 
 * [Ontoserver Postman collection](https://www.postman.com/jimsteel/ontoserver/collection/k4gv6q6/ontoserver-6-example-fhir-terminology-requests) by CSIRO  
 

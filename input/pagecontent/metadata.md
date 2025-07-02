@@ -1,9 +1,6 @@
 For each terminology resource a certain set of metadata is defined. Requirements for metadata have been set by the [coordination group of eHealth terminologies](https://teabekeskus.tehik.ee/et/terminoloogiastandardid/haldusmudel/osapooled/koordinatsioonikogu), that includes experts from TEHIK, Ministry of Social Affairs, Health Fund, and Health Development Institute. 
 Please see the [metadata logical model](StructureDefinition-Metadata.html) for full description.
 
-***
-
-Iga loend ja koodisüsteem on varustatud metaandmestikuga. Metaandmete soovitusliku koosseisu on kokku pannud [Klassifikaatorite ja koodiloendite koordinatsioonikogu](https://teabekeskus.tehik.ee/et/terminoloogiastandardid/haldusmudel/osapooled/koordinatsioonikogu). Metaandmestik moodustab klassifikaatori/koodiloendi passi. Siinses juhendis on metaandmestik avaldatud [loogilise andmemudelina](StructureDefinition-Metadata.html) ning metaandmed salvestatakse FHIR ressursi sees andmeelementides.
 
 ### Common rules for all resources
 

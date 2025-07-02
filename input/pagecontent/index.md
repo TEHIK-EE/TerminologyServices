@@ -53,14 +53,13 @@ Ontoserver licence was obtained through a public procurement process.
 ### References | Viited
 
 #### Specifications| Juhendid
-* [FHIR terminoloogia tutvustus](https://teabekeskus.tehik.ee/et/teenused/teabekeskuse-teenused/terminoloogiaserver/fhir-terminoloogia-tutvustus) **In Estonian**
+* [TEHIK FHIR terminoloogia tutvustus](https://teabekeskus.tehik.ee/et/teenused/teabekeskuse-teenused/terminoloogiaserver/fhir-terminoloogia-tutvustus) **In Estonian**
+* [TEHIK Postman collection with English documentation](https://github.com/TEHIK-EE/TerminologyServices/blob/master/files/tehik-ts-postman-collection.json)
 * [FHIR Terminology Module](https://www.hl7.org/fhir/terminology-module.html)
 * [FHIR Terminology Services](https://www.hl7.org/fhir/terminology-service.html)
 * [FHIR Terminology Services Tutorial by CSIRO](https://youtu.be/Q3qx0jh8x4k)
-* [Ontoserver Quick Start](https://ontoserver.csiro.au/docs/6/)
+* [Ontoserver Quick Start and FHIR API description](https://ontoserver.csiro.au/docs/7/)
 
-#### Trainings | Koolitused
-* [SNOMED CT Terminology Services](https://courses.ihtsdotools.org/product?catalog=TSC): using SNOMED CT terminology with FHIR and native Snowstorm API. 20h self-paced e-learning, free for SNOMED CT member countries (incl Estonia)
 
 #### Community support | Kogukonna tugi
 * [FHIR Zulip Chat](https://chat.fhir.org/)
