@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9c231b6a-cdad-49d3-a5f4-b193d0623b1c",
+		"_postman_id": "4ba4c276-4ba3-477c-b28e-1ad4f2a35e2d",
 		"name": "TEHIK terminology server",
 		"description": "The collection contains a set of frequently used searches and operations in TEHIK FHIR terminology server.\n\nThe queries are designed to work in TEHIK's production terminology server with the endpoint [https://term.tehik.ee/fhir](https://term.tehik.ee/fhir)\n\nTEHIK test server [https://term.test.tehik.ee/fhir](https://term.test.tehik.ee/fhir) may require the user to occasionally tweak the queries to match the existing resources in the test server.\n\nPlease note that not all search and operation input parameters described in HL7 FHIR documentation are supported by Ontoserver. For additional information, consult with Ontoserver FHIR R5 API documentation at [https://ontoserver.csiro.au/docs/7](https://ontoserver.csiro.au/docs/7)\n\nFor clarifications, feel free to contact us by email [andmekorraldus@tehik.ee](https://mailto:andmekorraldus@tehik.ee) or in [FHIR Zulip chat](https://chat.fhir.org/#narrow/channel/389311-Estonian-FHIR-community).",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -193,7 +193,7 @@
 			"response": []
 		},
 		{
-			"name": "CodeSystem by URL + version",
+			"name": "CodeSystem by URL + version (and return XML)",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -202,7 +202,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/fhir+json"
+						"value": "application/fhir+xml"
 					}
 				],
 				"body": {
@@ -229,7 +229,7 @@
 						}
 					]
 				},
-				"description": "This query retrieves CodeSystem resources that match the canonical URL and version provided as parameters.\n\nURL is the main identifier for a FHIR terminology resource, and therefore, together with the version number, it should correspond to exactly one resource in the server.\n\nThe response is always a searchset Bundle, even when only one match is found."
+				"description": "This query retrieves CodeSystem resources that match the canonical URL and version provided as parameters.\n\nURL is the main identifier for a FHIR terminology resource, and therefore, together with the version number, it should correspond to exactly one resource in the server.\n\nThe response is always a searchset Bundle, even when only one match is found.\n\nIn addition, a header \"Content-Type = application/fhir+xml\" is used to retrieve the result in FHIR XML format instead of FHIR JSON which is provided by default."
 			},
 			"response": []
 		},
@@ -371,7 +371,44 @@
 			"response": []
 		},
 		{
-			"name": "ValueSet expansion (default)",
+			"name": "ValueSet by URL (FHIR canonical)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/fhir+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/ValueSet/?url=https://fhir.ee/ValueSet/anesteesia-liigid",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ValueSet",
+						""
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "https://fhir.ee/ValueSet/anesteesia-liigid"
+						}
+					]
+				},
+				"description": "See description under \"CodeSystem by URL\""
+			},
+			"response": []
+		},
+		{
+			"name": "ValueSet expansion by ID (default)",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -405,6 +442,68 @@
 					]
 				},
 				"description": "This operations resolves the ValueSet composition rules into a full expansion of the ValueSet: all concepts that currently belong to the ValueSet are listed in the expansion element.\n\nIn this case, ValueSet definition also indicated that property 'parent' should be included in the default expansion for each concept.\n\nCodeSystem may have more designations or more properties. Those can be added to the expansion using parameters like includeDesignations=true or property=\\[code of property\\].\n\nUse acceptLanguage header to control the language of the displays in the expansion. Please note that acceptLanguage header does not affect the language of the metadata (title, description)."
+			},
+			"response": []
+		},
+		{
+			"name": "ValueSet expansion by URL (uses latest version)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/ValueSet/$expand?url=https://fhir.ee/ValueSet/ravi-liik",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ValueSet",
+						"$expand"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "https://fhir.ee/ValueSet/ravi-liik"
+						}
+					]
+				},
+				"description": "The request queries ValueSet expansion of a certain ValueSet without specifying the ValueSet or CodeSystem version.\n\nTherefore the expansion is resolved using the latest version of that ValueSet and the CodeSystem version that is specified in that ValueSet definition or chosen by default. For example, SNOMED CT value sets are typically resolved using the TEHIK-assigned default version, which is the latest SNOMED Estonian edition.\n\nPlease note, that the default version of a CodeSystem is set in an instance of a terminology server, and the expansion result may be different when another terminology server with different settings is used.\n\nThis query may be unreliable for use cases where you want to have full control over which ValueSet or CodeSystem version you want the expansion to be based on."
+			},
+			"response": []
+		},
+		{
+			"name": "ValueSet expansion (choose language of displays)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "en",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/fhir+xml",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/ValueSet/$expand?url=https://fhir.ee/ValueSet/ravi-liik",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ValueSet",
+						"$expand"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "https://fhir.ee/ValueSet/ravi-liik"
+						}
+					]
+				},
+				"description": "The request queries ValueSet expansion of the latest version of the ValueSet specified by URL (read more under \"ValueSet expansion by URL\").\n\nThis query also adds a header \"AcceptLanguage = en\" to ensure the expansion returns display names in English. The default language is chosen by the ValueSet and by the terminology server settings. Typically, Estonian language is set as default and does not have to be explicitly mentioned in the headers."
 			},
 			"response": []
 		},
@@ -449,43 +548,6 @@
 					]
 				},
 				"description": "This operation expands the ValueSet by id, including an additional property provided as a parameter.\n\nIn this case, ValueSet definition does not include property \"parent\" in the default expansion, as it would provide little value in this context. However, any system can request this additional information from the source CodeSystem (SNOMED CT in this case)."
-			},
-			"response": []
-		},
-		{
-			"name": "ValueSet by URL (FHIR canonical)",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/fhir+json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{url}}/ValueSet/?url=https://fhir.ee/ValueSet/anesteesia-liigid",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"ValueSet",
-						""
-					],
-					"query": [
-						{
-							"key": "url",
-							"value": "https://fhir.ee/ValueSet/anesteesia-liigid"
-						}
-					]
-				},
-				"description": "See description under \"CodeSystem by URL\""
 			},
 			"response": []
 		},
